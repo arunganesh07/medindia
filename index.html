@@ -383,6 +383,12 @@
         <div id="stateSection">
             <h2>Select State</h2>
             <div class="selection-grid">
+                <div class="card" data-state="Maharashtra" onclick="selectState(this)">
+                    <h3>Maharashtra</h3>
+                </div>
+                <div class="card" data-state="Uttar Pradesh" onclick="selectState(this)">
+                    <h3>Uttar Pradesh</h3>
+                </div>
                 <div class="card" data-state="Tamil Nadu" onclick="selectState(this)">
                     <h3>Tamil Nadu</h3>
                 </div>
@@ -395,6 +401,48 @@
                 <div class="card" data-state="Kerala" onclick="selectState(this)">
                     <h3>Kerala</h3>
                 </div>
+                <div class="card" data-state="Gujarat" onclick="selectState(this)">
+                    <h3>Gujarat</h3>
+                </div>
+                <div class="card" data-state="Rajasthan" onclick="selectState(this)">
+                    <h3>Rajasthan</h3>
+                </div>
+                <div class="card" data-state="Madhya Pradesh" onclick="selectState(this)">
+                    <h3>Madhya Pradesh</h3>
+                </div>
+                <!-- <div class="card" data-state="West Bengal" onclick="selectState(this)">
+                    <h3>West Bengal</h3>
+                </div>
+                <div class="card" data-state="Andhra Pradesh" onclick="selectState(this)">
+                    <h3>Andhra Pradesh</h3>
+                </div>
+                <div class="card" data-state="Punjab" onclick="selectState(this)">
+                    <h3>Punjab</h3>
+                </div>
+                <div class="card" data-state="Haryana" onclick="selectState(this)">
+                    <h3>Haryana</h3>
+                </div>
+                <div class="card" data-state="Bihar" onclick="selectState(this)">
+                    <h3>Bihar</h3>
+                </div>
+                <div class="card" data-state="Odisha" onclick="selectState(this)">
+                    <h3>Odisha</h3>
+                </div>
+                <div class="card" data-state="Delhi" onclick="selectState(this)">
+                    <h3>Delhi</h3>
+                </div>
+                <div class="card" data-state="Chhattisgarh" onclick="selectState(this)">
+                    <h3>Chhattisgarh</h3>
+                </div>
+                <div class="card" data-state="Jharkhand" onclick="selectState(this)">
+                    <h3>Jharkhand</h3>
+                </div>
+                <div class="card" data-state="Assam" onclick="selectState(this)">
+                    <h3>Assam</h3>
+                </div>
+                <div class="card" data-state="Uttarakhand" onclick="selectState(this)">
+                    <h3>Uttarakhand</h3>
+                </div> -->
             </div>
             <div class="navigation-buttons">
                 <button onclick="previousPage()" disabled>Previous</button>
@@ -523,487 +571,2155 @@
     <script>
         // Data structure for states, hospitals, specializations, and doctors
         const statesData = {
-            "Tamil Nadu": {
-                hospitals: {
-                    "Apollo Chennai": {
-                        specializations: ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
-                        doctors: {
-                            "Cardiology": [
-                                { name: "Dr. Rajesh Khanna", experience: "15+ years", fee: "₹1500" },
-                                { name: "Dr. Anjali Mehta", experience: "20+ years", fee: "₹3000" },
-                                { name: "Dr. Arvind Narayan", experience: "18+ years", fee: "₹2500" },
-                                { name: "Dr. Surya Prakash", experience: "16+ years", fee: "₹2200" },
-                                { name: "Dr. Vishal Reddy", experience: "14+ years", fee: "₹1900" },
-                                { name: "Dr. Akshay Nair", experience: "17+ years", fee: "₹2300" },
-                                { name: "Dr. Kiran Kumar", experience: "12+ years", fee: "₹1800" },
-                                { name: "Dr. Devendra Rao", experience: "13+ years", fee: "₹2000" },
-                                { name: "Dr. Manoj Iyer", experience: "15+ years", fee: "₹2100" },
-                                { name: "Dr. Naveen Menon", experience: "10+ years", fee: "₹1500" }
-                            ],
-                            "Neurology": [
-                                { name: "Dr. Priya Sharma", experience: "12+ years", fee: "₹2000" },
-                                { name: "Dr. Nandini Rao", experience: "14+ years", fee: "₹2500" },
-                                { name: "Dr. Madhavi Nair", experience: "16+ years", fee: "₹2700" },
-                                { name: "Dr. Venkat Prabhu", experience: "18+ years", fee: "₹2900" },
-                                { name: "Dr. Laxmi Shankar", experience: "15+ years", fee: "₹2400" },
-                                { name: "Dr. Shyam Sunder", experience: "17+ years", fee: "₹2600" },
-                                { name: "Dr. Rakesh Iyer", experience: "11+ years", fee: "₹2100" },
-                                { name: "Dr. Swathi Narayan", experience: "19+ years", fee: "₹3000" },
-                                { name: "Dr. Supriya Rajan", experience: "10+ years", fee: "₹1900" },
-                                { name: "Dr. Ganesh Varma", experience: "13+ years", fee: "₹2200" }
-                            ],
-                            "Orthopedics": [
-                                { name: "Dr. Sanjay Patel", experience: "18+ years", fee: "₹2500" },
-                                { name: "Dr. Mahesh Reddy", experience: "19+ years", fee: "₹2800" },
-                                { name: "Dr. Arun Nambiar", experience: "12+ years", fee: "₹2300" },
-                                { name: "Dr. Vijay Narayan", experience: "17+ years", fee: "₹2700" },
-                                { name: "Dr. Prakash Menon", experience: "16+ years", fee: "₹2600" },
-                                { name: "Dr. Deepak Swamy", experience: "20+ years", fee: "₹2900" },
-                                { name: "Dr. Naveen Subramanian", experience: "14+ years", fee: "₹2400" },
-                                { name: "Dr. Bhaskar Krishna", experience: "15+ years", fee: "₹2500" },
-                                { name: "Dr. Mukesh Rajan", experience: "11+ years", fee: "₹2100" },
-                                { name: "Dr. Karthik Gopal", experience: "13+ years", fee: "₹2200" }
-                            ],
-                            "Oncology": [
-                                { name: "Dr. Anjali Mehta", experience: "20+ years", fee: "₹3000" },
-                                { name: "Dr. Sunita Reddy", experience: "16+ years", fee: "₹2200" },
-                                { name: "Dr. Ravi Shankar", experience: "18+ years", fee: "₹2800" },
-                                { name: "Dr. Harini Menon", experience: "12+ years", fee: "₹2500" },
-                                { name: "Dr. Shravan Kumar", experience: "14+ years", fee: "₹2600" },
-                                { name: "Dr. Sridhar Narayan", experience: "17+ years", fee: "₹2700" },
-                                { name: "Dr. Ranganath Prabhu", experience: "19+ years", fee: "₹2900" },
-                                { name: "Dr. Divya Mohan", experience: "15+ years", fee: "₹2300" },
-                                { name: "Dr. Vishnu Menon", experience: "10+ years", fee: "₹2000" },
-                                { name: "Dr. Yashodha Iyer", experience: "13+ years", fee: "₹2100" }
-                            ],
-                            "Dermatology": [
-                                { name: "Dr. Neha Kapoor", experience: "13+ years", fee: "₹2000" },
-                                { name: "Dr. Rekha Reddy", experience: "16+ years", fee: "₹2400" },
-                                { name: "Dr. Suresh Nambiar", experience: "12+ years", fee: "₹2100" },
-                                { name: "Dr. Hemanth Kumar", experience: "15+ years", fee: "₹2300" },
-                                { name: "Dr. Kiran Subramanian", experience: "18+ years", fee: "₹2500" },
-                                { name: "Dr. Sanjana Iyer", experience: "14+ years", fee: "₹2200" },
-                                { name: "Dr. Ajay Gopal", experience: "17+ years", fee: "₹2600" },
-                                { name: "Dr. Meera Krishna", experience: "19+ years", fee: "₹2800" },
-                                { name: "Dr. Sandhya Mohan", experience: "11+ years", fee: "₹1900" },
-                                { name: "Dr. Mahalakshmi Rao", experience: "10+ years", fee: "₹1800" }
-                            ],
-                            "General": [
-                                { name: "Dr. Lakshmi Narayan", experience: "20+ years", fee: "₹1500" },
-                                { name: "Dr. Vishwanath Iyer", experience: "18+ years", fee: "₹1400" },
-                                { name: "Dr. Kavitha Menon", experience: "12+ years", fee: "₹1300" },
-                                { name: "Dr. Naveen Raj", experience: "15+ years", fee: "₹1350" },
-                                { name: "Dr. Aruna Reddy", experience: "14+ years", fee: "₹1250" },
-                                { name: "Dr. Karthik Rao", experience: "16+ years", fee: "₹1450" },
-                                { name: "Dr. Meenakshi Subramanian", experience: "19+ years", fee: "₹1550" },
-                                { name: "Dr. Rakesh Krishna", experience: "11+ years", fee: "₹1200" },
-                                { name: "Dr. Harsha Varma", experience: "13+ years", fee: "₹1300" },
-                                { name: "Dr. Yamini Prabhu", experience: "10+ years", fee: "₹1100" }
-                            ]
-                        }
-                    },
-                    "Sri Ramachandra Hospital Chennai": {
-                        specializations: ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
-                        doctors: {
-                            "Cardiology": [
-                                { name: "Dr. Balaji Srinivasan", experience: "22+ years", fee: "₹3000" },
-                                { name: "Dr. Anand Krishnan", experience: "18+ years", fee: "₹2700" },
-                                { name: "Dr. Priya Narayanan", experience: "16+ years", fee: "₹2500" },
-                                { name: "Dr. Ganesh Raghavan", experience: "14+ years", fee: "₹2400" },
-                                { name: "Dr. Meenakshi Raman", experience: "20+ years", fee: "₹2900" },
-                                { name: "Dr. Aravind Kumar", experience: "17+ years", fee: "₹2600" },
-                                { name: "Dr. Shruthi Venkatesh", experience: "15+ years", fee: "₹2500" },
-                                { name: "Dr. Rajesh Muthuraman", experience: "13+ years", fee: "₹2300" },
-                                { name: "Dr. Kavitha Iyer", experience: "12+ years", fee: "₹2200" },
-                                { name: "Dr. Manikandan Nair", experience: "10+ years", fee: "₹2000" }
-                            ],
-                            "Neurology": [
-                                { name: "Dr. Ramesh Balan", experience: "21+ years", fee: "₹3100" },
-                                { name: "Dr. Anirudh Venkatesan", experience: "19+ years", fee: "₹2900" },
-                                { name: "Dr. Srividya Raman", experience: "17+ years", fee: "₹2800" },
-                                { name: "Dr. Karthik Nair", experience: "14+ years", fee: "₹2500" },
-                                { name: "Dr. Sujatha Iyer", experience: "13+ years", fee: "₹2400" },
-                                { name: "Dr. Pranav Srinivasan", experience: "16+ years", fee: "₹2600" },
-                                { name: "Dr. Dinesh Kumar", experience: "12+ years", fee: "₹2300" },
-                                { name: "Dr. Yamini Rajan", experience: "11+ years", fee: "₹2200" },
-                                { name: "Dr. Swapna Krishnan", experience: "15+ years", fee: "₹2700" },
-                                { name: "Dr. Charan Raghavan", experience: "10+ years", fee: "₹2000" }
-                            ],
-                            "Orthopedics": [
-                                { name: "Dr. Hari Prasad", experience: "19+ years", fee: "₹2800" },
-                                { name: "Dr. Lakshmi Narayanan", experience: "18+ years", fee: "₹2700" },
-                                { name: "Dr. Rajasekar Iyer", experience: "16+ years", fee: "₹2600" },
-                                { name: "Dr. Vishnu Krishnan", experience: "15+ years", fee: "₹2500" },
-                                { name: "Dr. Anitha Balakrishnan", experience: "14+ years", fee: "₹2400" },
-                                { name: "Dr. Senthil Kumar", experience: "13+ years", fee: "₹2300" },
-                                { name: "Dr. Ganapathi Rao", experience: "12+ years", fee: "₹2200" },
-                                { name: "Dr. Arjun Menon", experience: "11+ years", fee: "₹2100" },
-                                { name: "Dr. Radha Shankar", experience: "10+ years", fee: "₹2000" },
-                                { name: "Dr. Dhananjay Raghavan", experience: "17+ years", fee: "₹2600" }
-                            ],
-                            "Oncology": [
-                                { name: "Dr. Karthikeyan Nair", experience: "22+ years", fee: "₹3200" },
-                                { name: "Dr. Deepa Ramesh", experience: "19+ years", fee: "₹3000" },
-                                { name: "Dr. Mohan Krishnan", experience: "17+ years", fee: "₹2800" },
-                                { name: "Dr. Swetha Rajan", experience: "15+ years", fee: "₹2600" },
-                                { name: "Dr. Sanjay Prakash", experience: "13+ years", fee: "₹2400" },
-                                { name: "Dr. Priyanka Vishwanath", experience: "12+ years", fee: "₹2300" },
-                                { name: "Dr. Ajay Menon", experience: "11+ years", fee: "₹2200" },
-                                { name: "Dr. Aravind Srinivas", experience: "10+ years", fee: "₹2100" },
-                                { name: "Dr. Meena Subramaniam", experience: "16+ years", fee: "₹2700" },
-                                { name: "Dr. Aditya Narayanan", experience: "14+ years", fee: "₹2500" }
-                            ],
-                            "Dermatology": [
-                                { name: "Dr. Nisha Karthik", experience: "20+ years", fee: "₹2500" },
-                                { name: "Dr. Prakash Raj", experience: "18+ years", fee: "₹2400" },
-                                { name: "Dr. Ananya Raghavan", experience: "16+ years", fee: "₹2300" },
-                                { name: "Dr. Vishal Kumar", experience: "14+ years", fee: "₹2200" },
-                                { name: "Dr. Rajalakshmi Narayan", experience: "12+ years", fee: "₹2100" },
-                                { name: "Dr. Aravind Venkatesh", experience: "10+ years", fee: "₹2000" },
-                                { name: "Dr. Yamini Krishnan", experience: "19+ years", fee: "₹2700" },
-                                { name: "Dr. Vijay Kumar", experience: "17+ years", fee: "₹2600" },
-                                { name: "Dr. Sridhar Ramesh", experience: "15+ years", fee: "₹2500" },
-                                { name: "Dr. Meera Iyer", experience: "11+ years", fee: "₹2200" }
-                            ],
-                            "General": [
-                                { name: "Dr. Shyam Sundar", experience: "22+ years", fee: "₹1800" },
-                                { name: "Dr. Lavanya Krishna", experience: "20+ years", fee: "₹1700" },
-                                { name: "Dr. Ramesh Balaji", experience: "18+ years", fee: "₹1600" },
-                                { name: "Dr. Swathi Menon", experience: "16+ years", fee: "₹1500" },
-                                { name: "Dr. Arjun Narayanan", experience: "14+ years", fee: "₹1400" },
-                                { name: "Dr. Deepika Raghavan", experience: "13+ years", fee: "₹1350" },
-                                { name: "Dr. Naveen Prakash", experience: "12+ years", fee: "₹1300" },
-                                { name: "Dr. Priya Iyer", experience: "11+ years", fee: "₹1250" },
-                                { name: "Dr. Raj Kumar", experience: "10+ years", fee: "₹1200" },
-                                { name: "Dr. Yamini Varma", experience: "15+ years", fee: "₹1450" }
-                            ]
-                        }
-                    }
-                }
-            },
-            "Karnataka": {
-                hospitals: {
-                    "Fortis Bengaluru": {
-                        specializations: ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
-                        doctors: {
-                            "Cardiology": [
-                                { name: "Dr. Raghavendra Rao", experience: "16+ years", fee: "₹2200" },
-                                { name: "Dr. Sandeep Narayan", experience: "14+ years", fee: "₹2100" },
-                                { name: "Dr. Bharath Kumar", experience: "18+ years", fee: "₹2500" },
-                                { name: "Dr. Anirudh Shankar", experience: "12+ years", fee: "₹2000" },
-                                { name: "Dr. Charan Iyer", experience: "15+ years", fee: "₹2300" },
-                                { name: "Dr. Praveen Reddy", experience: "17+ years", fee: "₹2400" },
-                                { name: "Dr. Ganesh Subramanian", experience: "11+ years", fee: "₹1900" },
-                                { name: "Dr. Arjun Varma", experience: "13+ years", fee: "₹1950" },
-                                { name: "Dr. Sriram Menon", experience: "10+ years", fee: "₹1800" },
-                                { name: "Dr. Rajiv Nair", experience: "19+ years", fee: "₹2700" }
-                            ],
-                            "Neurology": [
-                                { name: "Dr. Vishal Shankar", experience: "15+ years", fee: "₹2500" },
-                                { name: "Dr. Nitin Krishna", experience: "18+ years", fee: "₹2800" },
-                                { name: "Dr. Arvind Rao", experience: "12+ years", fee: "₹2100" },
-                                { name: "Dr. Srikanth Narayan", experience: "16+ years", fee: "₹2600" },
-                                { name: "Dr. Ramesh Iyer", experience: "17+ years", fee: "₹2700" },
-                                { name: "Dr. Meghana Reddy", experience: "14+ years", fee: "₹2200" },
-                                { name: "Dr. Swathi Prakash", experience: "10+ years", fee: "₹2000" },
-                                { name: "Dr. Kalyan Menon", experience: "11+ years", fee: "₹2300" },
-                                { name: "Dr. Pranav Nambiar", experience: "19+ years", fee: "₹2900" },
-                                { name: "Dr. Yashoda Rao", experience: "13+ years", fee: "₹2400" }
-                            ],
-                            "Orthopedics": [
-                                { name: "Dr. Narayan Prabhu", experience: "16+ years", fee: "₹2600" },
-                                { name: "Dr. Dinesh Menon", experience: "18+ years", fee: "₹2800" },
-                                { name: "Dr. Raghav Krishna", experience: "12+ years", fee: "₹2200" },
-                                { name: "Dr. Suresh Nair", experience: "14+ years", fee: "₹2400" },
-                                { name: "Dr. Pradeep Varma", experience: "19+ years", fee: "₹2900" },
-                                { name: "Dr. Rajan Subramanian", experience: "15+ years", fee: "₹2500" },
-                                { name: "Dr. Vinod Kumar", experience: "11+ years", fee: "₹2100" },
-                                { name: "Dr. Anurag Reddy", experience: "13+ years", fee: "₹2300" },
-                                { name: "Dr. Yogesh Rao", experience: "10+ years", fee: "₹2000" },
-                                { name: "Dr. Mahendra Iyer", experience: "17+ years", fee: "₹2700" }
-                            ],
-                            "Oncology": [
-                                { name: "Dr. Harsha Varma", experience: "20+ years", fee: "₹3000" },
-                                { name: "Dr. Lakshmi Rao", experience: "16+ years", fee: "₹2700" },
-                                { name: "Dr. Rajesh Shankar", experience: "18+ years", fee: "₹2900" },
-                                { name: "Dr. Vijay Narayan", experience: "14+ years", fee: "₹2500" },
-                                { name: "Dr. Kavita Menon", experience: "12+ years", fee: "₹2300" },
-                                { name: "Dr. Arun Nambiar", experience: "15+ years", fee: "₹2600" },
-                                { name: "Dr. Meera Krishna", experience: "11+ years", fee: "₹2200" },
-                                { name: "Dr. Sanjay Reddy", experience: "13+ years", fee: "₹2400" },
-                                { name: "Dr. Swarna Iyer", experience: "19+ years", fee: "₹3100" },
-                                { name: "Dr. Yuvraj Subramanian", experience: "10+ years", fee: "₹2000" }
-                            ],
-                            "Dermatology": [
-                                { name: "Dr. Divya Nair", experience: "15+ years", fee: "₹2200" },
-                                { name: "Dr. Arpita Shankar", experience: "18+ years", fee: "₹2500" },
-                                { name: "Dr. Sandeep Menon", experience: "14+ years", fee: "₹2300" },
-                                { name: "Dr. Nandita Rao", experience: "16+ years", fee: "₹2600" },
-                                { name: "Dr. Ajay Krishna", experience: "12+ years", fee: "₹2000" },
-                                { name: "Dr. Vaishnavi Reddy", experience: "17+ years", fee: "₹2700" },
-                                { name: "Dr. Kumar Iyer", experience: "19+ years", fee: "₹2800" },
-                                { name: "Dr. Shweta Narayan", experience: "11+ years", fee: "₹2100" },
-                                { name: "Dr. Aditya Varma", experience: "10+ years", fee: "₹1900" },
-                                { name: "Dr. Pooja Prakash", experience: "13+ years", fee: "₹2400" }
-                            ],
-                            "General": [
-                                { name: "Dr. Lakshmi Menon", experience: "20+ years", fee: "₹1500" },
-                                { name: "Dr. Anand Kumar", experience: "18+ years", fee: "₹1400" },
-                                { name: "Dr. Priyanka Narayan", experience: "12+ years", fee: "₹1300" },
-                                { name: "Dr. Mukesh Iyer", experience: "15+ years", fee: "₹1350" },
-                                { name: "Dr. Rashmi Reddy", experience: "14+ years", fee: "₹1250" },
-                                { name: "Dr. Krishna Subramanian", experience: "16+ years", fee: "₹1450" },
-                                { name: "Dr. Ramya Nambiar", experience: "19+ years", fee: "₹1550" },
-                                { name: "Dr. Karthik Rao", experience: "11+ years", fee: "₹1200" },
-                                { name: "Dr. Suresh Varma", experience: "13+ years", fee: "₹1300" },
-                                { name: "Dr. Yamini Prabhu", experience: "10+ years", fee: "₹1100" }
-                            ]
-                        }
-                    },
-                    "Apollo Bengaluru": {
-                        specializations: ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
-                        doctors: {
-                            "Cardiology": [
-                                { name: "Dr. Prakash Rao", experience: "18+ years", fee: "₹2500" },
-                                { name: "Dr. Vishnu Narayan", experience: "16+ years", fee: "₹2300" },
-                                { name: "Dr. Suman Reddy", experience: "14+ years", fee: "₹2200" },
-                                { name: "Dr. Karthik Iyer", experience: "12+ years", fee: "₹2100" },
-                                { name: "Dr. Ananya Menon", experience: "19+ years", fee: "₹2700" },
-                                { name: "Dr. Ganesh Kumar", experience: "17+ years", fee: "₹2600" },
-                                { name: "Dr. Deepak Subramanian", experience: "15+ years", fee: "₹2400" },
-                                { name: "Dr. Shruti Varma", experience: "10+ years", fee: "₹2000" },
-                                { name: "Dr. Arjun Nair", experience: "11+ years", fee: "₹1950" },
-                                { name: "Dr. Vijay Prabhu", experience: "20+ years", fee: "₹2800" }
-                            ],
-                            "Neurology": [
-                                { name: "Dr. Rajan Krishna", experience: "15+ years", fee: "₹2600" },
-                                { name: "Dr. Vikram Narayan", experience: "18+ years", fee: "₹2800" },
-                                { name: "Dr. Priya Reddy", experience: "12+ years", fee: "₹2200" },
-                                { name: "Dr. Sridhar Nair", experience: "16+ years", fee: "₹2700" },
-                                { name: "Dr. Sanjana Menon", experience: "14+ years", fee: "₹2300" },
-                                { name: "Dr. Pranav Rao", experience: "17+ years", fee: "₹2900" },
-                                { name: "Dr. Meenakshi Iyer", experience: "10+ years", fee: "₹2100" },
-                                { name: "Dr. Kalyani Subramanian", experience: "11+ years", fee: "₹2000" },
-                                { name: "Dr. Dinesh Prakash", experience: "19+ years", fee: "₹3100" },
-                                { name: "Dr. Yamini Varma", experience: "13+ years", fee: "₹2400" }
-                            ],
-                            "Orthopedics": [
-                                { name: "Dr. Aravind Narayan", experience: "18+ years", fee: "₹2700" },
-                                { name: "Dr. Charan Krishna", experience: "15+ years", fee: "₹2500" },
-                                { name: "Dr. Naveen Reddy", experience: "12+ years", fee: "₹2300" },
-                                { name: "Dr. Shravan Iyer", experience: "14+ years", fee: "₹2200" },
-                                { name: "Dr. Surya Menon", experience: "19+ years", fee: "₹2900" },
-                                { name: "Dr. Ramesh Rao", experience: "16+ years", fee: "₹2600" },
-                                { name: "Dr. Karthika Subramanian", experience: "11+ years", fee: "₹2100" },
-                                { name: "Dr. Manjunath Varma", experience: "10+ years", fee: "₹2000" },
-                                { name: "Dr. Ashok Prabhu", experience: "13+ years", fee: "₹2400" },
-                                { name: "Dr. Sandeep Nair", experience: "17+ years", fee: "₹2800" }
-                            ],
-                            "Oncology": [
-                                { name: "Dr. Vishal Menon", experience: "20+ years", fee: "₹3200" },
-                                { name: "Dr. Rajesh Kumar", experience: "18+ years", fee: "₹3000" },
-                                { name: "Dr. Sunanda Rao", experience: "15+ years", fee: "₹2700" },
-                                { name: "Dr. Megha Prakash", experience: "12+ years", fee: "₹2400" },
-                                { name: "Dr. Sriram Reddy", experience: "14+ years", fee: "₹2500" },
-                                { name: "Dr. Arjun Nambiar", experience: "16+ years", fee: "₹2900" },
-                                { name: "Dr. Kiran Subramanian", experience: "10+ years", fee: "₹2100" },
-                                { name: "Dr. Swapna Iyer", experience: "11+ years", fee: "₹2200" },
-                                { name: "Dr. Pavan Narayan", experience: "13+ years", fee: "₹2300" },
-                                { name: "Dr. Anil Varma", experience: "19+ years", fee: "₹3100" }
-                            ],
-                            "Dermatology": [
-                                { name: "Dr. Lavanya Krishna", experience: "15+ years", fee: "₹2200" },
-                                { name: "Dr. Karthik Reddy", experience: "18+ years", fee: "₹2500" },
-                                { name: "Dr. Shruti Nair", experience: "14+ years", fee: "₹2300" },
-                                { name: "Dr. Disha Subramanian", experience: "16+ years", fee: "₹2600" },
-                                { name: "Dr. Ashwin Kumar", experience: "12+ years", fee: "₹2000" },
-                                { name: "Dr. Nisha Varma", experience: "17+ years", fee: "₹2700" },
-                                { name: "Dr. Kumar Narayan", experience: "19+ years", fee: "₹2800" },
-                                { name: "Dr. Pooja Iyer", experience: "11+ years", fee: "₹2100" },
-                                { name: "Dr. Pradeep Rao", experience: "10+ years", fee: "₹1900" },
-                                { name: "Dr. Yamini Prakash", experience: "13+ years", fee: "₹2400" }
-                            ],
-                            "General": [
-                                { name: "Dr. Latha Menon", experience: "20+ years", fee: "₹1600" },
-                                { name: "Dr. Ramesh Kumar", experience: "18+ years", fee: "₹1500" },
-                                { name: "Dr. Priyanka Rao", experience: "12+ years", fee: "₹1400" },
-                                { name: "Dr. Mukesh Narayan", experience: "15+ years", fee: "₹1450" },
-                                { name: "Dr. Rashmi Reddy", experience: "14+ years", fee: "₹1350" },
-                                { name: "Dr. Krishna Subramanian", experience: "16+ years", fee: "₹1550" },
-                                { name: "Dr. Ramya Nambiar", experience: "19+ years", fee: "₹1650" },
-                                { name: "Dr. Karthik Varma", experience: "11+ years", fee: "₹1300" },
-                                { name: "Dr. Suresh Prakash", experience: "13+ years", fee: "₹1400" },
-                                { name: "Dr. Yamini Iyer", experience: "10+ years", fee: "₹1250" }
-                            ]
-                        }
-                    }
-                }
-            },
-            "Telangana": {
-                hospitals: {
-                    "Apollo Hyderabad": {
-                        specializations: ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
-                        doctors: {
-                            "Cardiology": [
-                                { name: "Dr. Rajesh Khanna", experience: "15+ years", fee: "₹1500" },
-                                { name: "Dr. Anjali Mehta", experience: "20+ years", fee: "₹3000" },
-                                { name: "Dr. Arvind Narayan", experience: "18+ years", fee: "₹2500" },
-                                { name: "Dr. Surya Prakash", experience: "16+ years", fee: "₹2200" },
-                                { name: "Dr. Vishal Reddy", experience: "14+ years", fee: "₹1900" },
-                                { name: "Dr. Akshay Nair", experience: "17+ years", fee: "₹2300" },
-                                { name: "Dr. Kiran Kumar", experience: "12+ years", fee: "₹1800" },
-                                { name: "Dr. Devendra Rao", experience: "13+ years", fee: "₹2000" },
-                                { name: "Dr. Manoj Iyer", experience: "15+ years", fee: "₹2100" },
-                                { name: "Dr. Naveen Menon", experience: "10+ years", fee: "₹1500" }
-                            ],
-                            "Neurology": [
-                                { name: "Dr. Priya Sharma", experience: "12+ years", fee: "₹2000" },
-                                { name: "Dr. Nandini Rao", experience: "14+ years", fee: "₹2500" },
-                                { name: "Dr. Madhavi Nair", experience: "16+ years", fee: "₹2700" },
-                                { name: "Dr. Venkat Prabhu", experience: "18+ years", fee: "₹2900" },
-                                { name: "Dr. Laxmi Shankar", experience: "15+ years", fee: "₹2400" },
-                                { name: "Dr. Shyam Sunder", experience: "17+ years", fee: "₹2600" },
-                                { name: "Dr. Rakesh Iyer", experience: "11+ years", fee: "₹2100" },
-                                { name: "Dr. Swathi Narayan", experience: "19+ years", fee: "₹3000" },
-                                { name: "Dr. Supriya Rajan", experience: "10+ years", fee: "₹1900" },
-                                { name: "Dr. Ganesh Varma", experience: "13+ years", fee: "₹2200" }
-                            ],
-                            "Orthopedics": [
-                                { name: "Dr. Sanjay Patel", experience: "18+ years", fee: "₹2500" },
-                                { name: "Dr. Mahesh Reddy", experience: "19+ years", fee: "₹2800" },
-                                { name: "Dr. Arun Nambiar", experience: "12+ years", fee: "₹2300" },
-                                { name: "Dr. Vijay Narayan", experience: "17+ years", fee: "₹2700" },
-                                { name: "Dr. Prakash Menon", experience: "16+ years", fee: "₹2600" },
-                                { name: "Dr. Deepak Swamy", experience: "20+ years", fee: "₹2900" },
-                                { name: "Dr. Naveen Subramanian", experience: "14+ years", fee: "₹2400" },
-                                { name: "Dr. Bhaskar Krishna", experience: "15+ years", fee: "₹2500" },
-                                { name: "Dr. Mukesh Rajan", experience: "11+ years", fee: "₹2100" },
-                                { name: "Dr. Karthik Gopal", experience: "13+ years", fee: "₹2200" }
-                            ],
-                            "Oncology": [
-                                { name: "Dr. Anjali Mehta", experience: "20+ years", fee: "₹3000" },
-                                { name: "Dr. Sunita Reddy", experience: "16+ years", fee: "₹2200" },
-                                { name: "Dr. Ravi Shankar", experience: "18+ years", fee: "₹2800" },
-                                { name: "Dr. Harini Menon", experience: "12+ years", fee: "₹2500" },
-                                { name: "Dr. Shravan Kumar", experience: "14+ years", fee: "₹2600" },
-                                { name: "Dr. Sridhar Narayan", experience: "17+ years", fee: "₹2700" },
-                                { name: "Dr. Ranganath Prabhu", experience: "19+ years", fee: "₹2900" },
-                                { name: "Dr. Divya Mohan", experience: "15+ years", fee: "₹2300" },
-                                { name: "Dr. Vishnu Menon", experience: "10+ years", fee: "₹2000" },
-                                { name: "Dr. Yashodha Iyer", experience: "13+ years", fee: "₹2100" }
-                            ],
-                            "Dermatology": [
-                                { name: "Dr. Neha Kapoor", experience: "13+ years", fee: "₹2000" },
-                                { name: "Dr. Rekha Reddy", experience: "16+ years", fee: "₹2400" },
-                                { name: "Dr. Suresh Nambiar", experience: "12+ years", fee: "₹2100" },
-                                { name: "Dr. Hemanth Kumar", experience: "15+ years", fee: "₹2300" },
-                                { name: "Dr. Kiran Subramanian", experience: "18+ years", fee: "₹2500" },
-                                { name: "Dr. Sanjana Iyer", experience: "14+ years", fee: "₹2200" },
-                                { name: "Dr. Ajay Gopal", experience: "17+ years", fee: "₹2600" },
-                                { name: "Dr. Meera Krishna", experience: "19+ years", fee: "₹2800" },
-                                { name: "Dr. Sandhya Mohan", experience: "11+ years", fee: "₹1900" },
-                                { name: "Dr. Mahalakshmi Rao", experience: "10+ years", fee: "₹1800" }
-                            ],
-                            "General": [
-                                { name: "Dr. Lakshmi Narayan", experience: "20+ years", fee: "₹1500" },
-                                { name: "Dr. Vishwanath Iyer", experience: "18+ years", fee: "₹1400" },
-                                { name: "Dr. Kavitha Menon", experience: "12+ years", fee: "₹1300" },
-                                { name: "Dr. Naveen Raj", experience: "15+ years", fee: "₹1350" },
-                                { name: "Dr. Aruna Reddy", experience: "14+ years", fee: "₹1250" },
-                                { name: "Dr. Karthik Rao", experience: "16+ years", fee: "₹1450" },
-                                { name: "Dr. Meenakshi Subramanian", experience: "19+ years", fee: "₹1550" },
-                                { name: "Dr. Rakesh Krishna", experience: "11+ years", fee: "₹1200" },
-                                { name: "Dr. Harsha Varma", experience: "13+ years", fee: "₹1300" },
-                                { name: "Dr. Yamini Prabhu", experience: "10+ years", fee: "₹1100" }
-                            ]
-                        }
-                    }
-                }
-            },
-            "Kerala": {
-                hospitals: {
-                    "Apollo Kochi": {
-                        specializations: ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
-                        doctors: {
-                            "Cardiology": [
-                                { name: "Dr. Rajesh Khanna", experience: "15+ years", fee: "₹1500" },
-                                { name: "Dr. Anjali Mehta", experience: "20+ years", fee: "₹3000" },
-                                { name: "Dr. Arvind Narayan", experience: "18+ years", fee: "₹2500" },
-                                { name: "Dr. Surya Prakash", experience: "16+ years", fee: "₹2200" },
-                                { name: "Dr. Vishal Reddy", experience: "14+ years", fee: "₹1900" },
-                                { name: "Dr. Akshay Nair", experience: "17+ years", fee: "₹2300" },
-                                { name: "Dr. Kiran Kumar", experience: "12+ years", fee: "₹1800" },
-                                { name: "Dr. Devendra Rao", experience: "13+ years", fee: "₹2000" },
-                                { name: "Dr. Manoj Iyer", experience: "15+ years", fee: "₹2100" },
-                                { name: "Dr. Naveen Menon", experience: "10+ years", fee: "₹1500" }
-                            ],
-                            "Neurology": [
-                                { name: "Dr. Priya Sharma", experience: "12+ years", fee: "₹2000" },
-                                { name: "Dr. Nandini Rao", experience: "14+ years", fee: "₹2500" },
-                                { name: "Dr. Madhavi Nair", experience: "16+ years", fee: "₹2700" },
-                                { name: "Dr. Venkat Prabhu", experience: "18+ years", fee: "₹2900" },
-                                { name: "Dr. Laxmi Shankar", experience: "15+ years", fee: "₹2400" },
-                                { name: "Dr. Shyam Sunder", experience: "17+ years", fee: "₹2600" },
-                                { name: "Dr. Rakesh Iyer", experience: "11+ years", fee: "₹2100" },
-                                { name: "Dr. Swathi Narayan", experience: "19+ years", fee: "₹3000" },
-                                { name: "Dr. Supriya Rajan", experience: "10+ years", fee: "₹1900" },
-                                { name: "Dr. Ganesh Varma", experience: "13+ years", fee: "₹2200" }
-                            ],
-                            "Orthopedics": [
-                                { name: "Dr. Sanjay Patel", experience: "18+ years", fee: "₹2500" },
-                                { name: "Dr. Mahesh Reddy", experience: "19+ years", fee: "₹2800" },
-                                { name: "Dr. Arun Nambiar", experience: "12+ years", fee: "₹2300" },
-                                { name: "Dr. Vijay Narayan", experience: "17+ years", fee: "₹2700" },
-                                { name: "Dr. Prakash Menon", experience: "16+ years", fee: "₹2600" },
-                                { name: "Dr. Deepak Swamy", experience: "20+ years", fee: "₹2900" },
-                                { name: "Dr. Naveen Subramanian", experience: "14+ years", fee: "₹2400" },
-                                { name: "Dr. Bhaskar Krishna", experience: "15+ years", fee: "₹2500" },
-                                { name: "Dr. Mukesh Rajan", experience: "11+ years", fee: "₹2100" },
-                                { name: "Dr. Karthik Gopal", experience: "13+ years", fee: "₹2200" }
-                            ],
-                            "Oncology": [
-                                { name: "Dr. Anjali Mehta", experience: "20+ years", fee: "₹3000" },
-                                { name: "Dr. Sunita Reddy", experience: "16+ years", fee: "₹2200" },
-                                { name: "Dr. Ravi Shankar", experience: "18+ years", fee: "₹2800" },
-                                { name: "Dr. Harini Menon", experience: "12+ years", fee: "₹2500" },
-                                { name: "Dr. Shravan Kumar", experience: "14+ years", fee: "₹2600" },
-                                { name: "Dr. Sridhar Narayan", experience: "17+ years", fee: "₹2700" },
-                                { name: "Dr. Ranganath Prabhu", experience: "19+ years", fee: "₹2900" },
-                                { name: "Dr. Divya Mohan", experience: "15+ years", fee: "₹2300" },
-                                { name: "Dr. Vishnu Menon", experience: "10+ years", fee: "₹2000" },
-                                { name: "Dr. Yashodha Iyer", experience: "13+ years", fee: "₹2100" }
-                            ],
-                            "Dermatology": [
-                                { name: "Dr. Neha Kapoor", experience: "13+ years", fee: "₹2000" },
-                                { name: "Dr. Rekha Reddy", experience: "16+ years", fee: "₹2400" },
-                                { name: "Dr. Suresh Nambiar", experience: "12+ years", fee: "₹2100" },
-                                { name: "Dr. Hemanth Kumar", experience: "15+ years", fee: "₹2300" },
-                                { name: "Dr. Kiran Subramanian", experience: "18+ years", fee: "₹2500" },
-                                { name: "Dr. Sanjana Iyer", experience: "14+ years", fee: "₹2200" },
-                                { name: "Dr. Ajay Gopal", experience: "17+ years", fee: "₹2600" },
-                                { name: "Dr. Meera Krishna", experience: "19+ years", fee: "₹2800" },
-                                { name: "Dr. Sandhya Mohan", experience: "11+ years", fee: "₹1900" },
-                                { name: "Dr. Mahalakshmi Rao", experience: "10+ years", fee: "₹1800" }
-                            ],
-                            "General": [
-                                { name: "Dr. Lakshmi Narayan", experience: "20+ years", fee: "₹1500" },
-                                { name: "Dr. Vishwanath Iyer", experience: "18+ years", fee: "₹1400" },
-                                { name: "Dr. Kavitha Menon", experience: "12+ years", fee: "₹1300" },
-                                { name: "Dr. Naveen Raj", experience: "15+ years", fee: "₹1350" },
-                                { name: "Dr. Aruna Reddy", experience: "14+ years", fee: "₹1250" },
-                                { name: "Dr. Karthik Rao", experience: "16+ years", fee: "₹1450" },
-                                { name: "Dr. Meenakshi Subramanian", experience: "19+ years", fee: "₹1550" },
-                                { name: "Dr. Rakesh Krishna", experience: "11+ years", fee: "₹1200" },
-                                { name: "Dr. Harsha Varma", experience: "13+ years", fee: "₹1300" },
-                                { name: "Dr. Yamini Prabhu", experience: "10+ years", fee: "₹1100" }
-                            ]
-                        }
-                    }
-                }
+           "Tamil Nadu": {
+           "hospitals": {
+        "Apollo Chennai": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "15+ years", "fee": "₹1500" },
+                    { "name": "Dr. Anjali Mehta", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Arvind Narayan", "experience": "18+ years", "fee": "₹2500" },
+                    { "name": "Dr. Surya Prakash", "experience": "16+ years", "fee": "₹2200" },
+                    { "name": "Dr. Vishal Reddy", "experience": "14+ years", "fee": "₹1900" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "12+ years", "fee": "₹2000" },
+                    { "name": "Dr. Nandini Rao", "experience": "14+ years", "fee": "₹2500" },
+                    { "name": "Dr. Madhavi Nair", "experience": "16+ years", "fee": "₹2700" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "18+ years", "fee": "₹2900" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "15+ years", "fee": "₹2400" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "18+ years", "fee": "₹2500" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "19+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "12+ years", "fee": "₹2300" },
+                    { "name": "Dr. Vijay Narayan", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Prakash Menon", "experience": "16+ years", "fee": "₹2600" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Sunita Reddy", "experience": "16+ years", "fee": "₹2200" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "12+ years", "fee": "₹2500" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2600" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "13+ years", "fee": "₹2000" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2400" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "12+ years", "fee": "₹2100" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "15+ years", "fee": "₹2300" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "18+ years", "fee": "₹2500" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "12+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "15+ years", "fee": "₹1350" },
+                    { "name": "Dr. Aruna Reddy", "experience": "14+ years", "fee": "₹1250" }
+                ]
             }
-        };
+        },
+        "Sri Ramachandra Hospital Chennai": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Balaji Srinivasan", "experience": "22+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anand Krishnan", "experience": "18+ years", "fee": "₹2700" },
+                    { "name": "Dr. Priya Narayanan", "experience": "16+ years", "fee": "₹2500" },
+                    { "name": "Dr. Ganesh Raghavan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Meenakshi Raman", "experience": "20+ years", "fee": "₹2900" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Ramesh Balan", "experience": "21+ years", "fee": "₹3100" },
+                    { "name": "Dr. Anirudh Venkatesan", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Srividya Raman", "experience": "17+ years", "fee": "₹2800" },
+                    { "name": "Dr. Karthik Nair", "experience": "14+ years", "fee": "₹2500" },
+                    { "name": "Dr. Sujatha Iyer", "experience": "13+ years", "fee": "₹2400" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Hari Prasad", "experience": "19+ years", "fee": "₹2800" },
+                    { "name": "Dr. Lakshmi Narayanan", "experience": "18+ years", "fee": "₹2700" },
+                    { "name": "Dr. Rajasekar Iyer", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vishnu Krishnan", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Anitha Balakrishnan", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Karthikeyan Nair", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Deepa Ramesh", "experience": "19+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mohan Krishnan", "experience": "17+ years", "fee": "₹2800" },
+                    { "name": "Dr. Swetha Rajan", "experience": "15+ years", "fee": "₹2600" },
+                    { "name": "Dr. Sanjay Prakash", "experience": "13+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Nisha Karthik", "experience": "20+ years", "fee": "₹2500" },
+                    { "name": "Dr. Prakash Raj", "experience": "18+ years", "fee": "₹2400" },
+                    { "name": "Dr. Ananya Raghavan", "experience": "16+ years", "fee": "₹2300" },
+                    { "name": "Dr. Vishal Kumar", "experience": "14+ years", "fee": "₹2200" },
+                    { "name": "Dr. Rajalakshmi Narayan", "experience": "12+ years", "fee": "₹2100" }
+                ],
+                "General": [
+                    { "name": "Dr. Shyam Sundar", "experience": "22+ years", "fee": "₹1800" },
+                    { "name": "Dr. Lavanya Krishna", "experience": "20+ years", "fee": "₹1700" },
+                    { "name": "Dr. Ramesh Balaji", "experience": "18+ years", "fee": "₹1600" },
+                    { "name": "Dr. Swathi Menon", "experience": "16+ years", "fee": "₹1500" },
+                    { "name": "Dr. Arjun Narayanan", "experience": "14+ years", "fee": "₹1400" }
+                ]
+            }
+        },
+        "MIOT International Chennai": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Karthik Subramanian", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Ananya Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Ramesh Iyer", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Priya Narayan", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Suresh Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Arjun Menon", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Shyam Sunder", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Prakash Menon", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Fortis Malar Chennai": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Billroth Hospitals Chennai": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        }
+    }
+ },
+            "Karnataka": {
+    "hospitals": {
+        "Fortis Bengaluru": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Raghavendra Rao", "experience": "16+ years", "fee": "₹2200" },
+                    { "name": "Dr. Sandeep Narayan", "experience": "14+ years", "fee": "₹2100" },
+                    { "name": "Dr. Bharath Kumar", "experience": "18+ years", "fee": "₹2500" },
+                    { "name": "Dr. Anirudh Shankar", "experience": "12+ years", "fee": "₹2000" },
+                    { "name": "Dr. Charan Iyer", "experience": "15+ years", "fee": "₹2300" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Vishal Shankar", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Nitin Krishna", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Rao", "experience": "12+ years", "fee": "₹2100" },
+                    { "name": "Dr. Srikanth Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Ramesh Iyer", "experience": "17+ years", "fee": "₹2700" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Hari Prasad", "experience": "19+ years", "fee": "₹2800" },
+                    { "name": "Dr. Lakshmi Narayanan", "experience": "18+ years", "fee": "₹2700" },
+                    { "name": "Dr. Rajasekar Iyer", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vishnu Krishnan", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Anitha Balakrishnan", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Karthikeyan Nair", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Deepa Ramesh", "experience": "19+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mohan Krishnan", "experience": "17+ years", "fee": "₹2800" },
+                    { "name": "Dr. Swetha Rajan", "experience": "15+ years", "fee": "₹2600" },
+                    { "name": "Dr. Sanjay Prakash", "experience": "13+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Nisha Karthik", "experience": "20+ years", "fee": "₹2500" },
+                    { "name": "Dr. Prakash Raj", "experience": "18+ years", "fee": "₹2400" },
+                    { "name": "Dr. Ananya Raghavan", "experience": "16+ years", "fee": "₹2300" },
+                    { "name": "Dr. Vishal Kumar", "experience": "14+ years", "fee": "₹2200" },
+                    { "name": "Dr. Rajalakshmi Narayan", "experience": "12+ years", "fee": "₹2100" }
+                ],
+                "General": [
+                    { "name": "Dr. Shyam Sundar", "experience": "22+ years", "fee": "₹1800" },
+                    { "name": "Dr. Lavanya Krishna", "experience": "20+ years", "fee": "₹1700" },
+                    { "name": "Dr. Ramesh Balaji", "experience": "18+ years", "fee": "₹1600" },
+                    { "name": "Dr. Swathi Menon", "experience": "16+ years", "fee": "₹1500" },
+                    { "name": "Dr. Arjun Narayanan", "experience": "14+ years", "fee": "₹1400" }
+                ]
+            }
+        },
+        "Apollo Bengaluru": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Prakash Rao", "experience": "18+ years", "fee": "₹2500" },
+                    { "name": "Dr. Vishnu Narayan", "experience": "16+ years", "fee": "₹2300" },
+                    { "name": "Dr. Suman Reddy", "experience": "14+ years", "fee": "₹2200" },
+                    { "name": "Dr. Karthik Iyer", "experience": "12+ years", "fee": "₹2100" },
+                    { "name": "Dr. Ananya Menon", "experience": "19+ years", "fee": "₹2700" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Rajan Krishna", "experience": "15+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vikram Narayan", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Priya Reddy", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Sridhar Nair", "experience": "16+ years", "fee": "₹2700" },
+                    { "name": "Dr. Sanjana Menon", "experience": "14+ years", "fee": "₹2300" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Aravind Narayan", "experience": "18+ years", "fee": "₹2700" },
+                    { "name": "Dr. Charan Krishna", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Naveen Reddy", "experience": "12+ years", "fee": "₹2300" },
+                    { "name": "Dr. Shravan Iyer", "experience": "14+ years", "fee": "₹2200" },
+                    { "name": "Dr. Surya Menon", "experience": "19+ years", "fee": "₹2900" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Vishal Menon", "experience": "20+ years", "fee": "₹3200" },
+                    { "name": "Dr. Rajesh Kumar", "experience": "18+ years", "fee": "₹3000" },
+                    { "name": "Dr. Sunanda Rao", "experience": "15+ years", "fee": "₹2700" },
+                    { "name": "Dr. Megha Prakash", "experience": "12+ years", "fee": "₹2400" },
+                    { "name": "Dr. Sriram Reddy", "experience": "14+ years", "fee": "₹2500" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Lavanya Krishna", "experience": "15+ years", "fee": "₹2200" },
+                    { "name": "Dr. Karthik Reddy", "experience": "18+ years", "fee": "₹2500" },
+                    { "name": "Dr. Shruti Nair", "experience": "14+ years", "fee": "₹2300" },
+                    { "name": "Dr. Disha Subramanian", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Ashwin Kumar", "experience": "12+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Latha Menon", "experience": "20+ years", "fee": "₹1600" },
+                    { "name": "Dr. Ramesh Kumar", "experience": "18+ years", "fee": "₹1500" },
+                    { "name": "Dr. Priyanka Rao", "experience": "12+ years", "fee": "₹1400" },
+                    { "name": "Dr. Mukesh Narayan", "experience": "15+ years", "fee": "₹1450" },
+                    { "name": "Dr. Rashmi Reddy", "experience": "14+ years", "fee": "₹1350" }
+                ]
+            }
+        },
+        "Manipal Hospital Bengaluru": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Narayana Health Bengaluru": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Columbia Asia Bengaluru": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        }
+    }
+},
+           "Telangana": {
+    "hospitals": {
+        "Apollo Hyderabad": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "15+ years", "fee": "₹1500" },
+                    { "name": "Dr. Anjali Mehta", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Arvind Narayan", "experience": "18+ years", "fee": "₹2500" },
+                    { "name": "Dr. Surya Prakash", "experience": "16+ years", "fee": "₹2200" },
+                    { "name": "Dr. Vishal Reddy", "experience": "14+ years", "fee": "₹1900" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "12+ years", "fee": "₹2000" },
+                    { "name": "Dr. Nandini Rao", "experience": "14+ years", "fee": "₹2500" },
+                    { "name": "Dr. Madhavi Nair", "experience": "16+ years", "fee": "₹2700" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "18+ years", "fee": "₹2900" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "15+ years", "fee": "₹2400" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "18+ years", "fee": "₹2500" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "19+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "12+ years", "fee": "₹2300" },
+                    { "name": "Dr. Vijay Narayan", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Prakash Menon", "experience": "16+ years", "fee": "₹2600" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Sunita Reddy", "experience": "16+ years", "fee": "₹2200" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "12+ years", "fee": "₹2500" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2600" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "13+ years", "fee": "₹2000" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2400" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "12+ years", "fee": "₹2100" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "15+ years", "fee": "₹2300" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "18+ years", "fee": "₹2500" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "12+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "15+ years", "fee": "₹1350" },
+                    { "name": "Dr. Aruna Reddy", "experience": "14+ years", "fee": "₹1250" }
+                ]
+            }
+        },
+        "Yashoda Hospitals Hyderabad": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "KIMS Hyderabad": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Continental Hospitals Hyderabad": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Care Hospitals Hyderabad": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        }
+    }
+}, "Kerala": {
+    "hospitals": {
+        "Apollo Kochi": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "15+ years", "fee": "₹1500" },
+                    { "name": "Dr. Anjali Mehta", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Arvind Narayan", "experience": "18+ years", "fee": "₹2500" },
+                    { "name": "Dr. Surya Prakash", "experience": "16+ years", "fee": "₹2200" },
+                    { "name": "Dr. Vishal Reddy", "experience": "14+ years", "fee": "₹1900" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "12+ years", "fee": "₹2000" },
+                    { "name": "Dr. Nandini Rao", "experience": "14+ years", "fee": "₹2500" },
+                    { "name": "Dr. Madhavi Nair", "experience": "16+ years", "fee": "₹2700" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "18+ years", "fee": "₹2900" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "15+ years", "fee": "₹2400" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "18+ years", "fee": "₹2500" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "19+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "12+ years", "fee": "₹2300" },
+                    { "name": "Dr. Vijay Narayan", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Prakash Menon", "experience": "16+ years", "fee": "₹2600" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Sunita Reddy", "experience": "16+ years", "fee": "₹2200" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "12+ years", "fee": "₹2500" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2600" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "13+ years", "fee": "₹2000" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2400" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "12+ years", "fee": "₹2100" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "15+ years", "fee": "₹2300" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "18+ years", "fee": "₹2500" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "12+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "15+ years", "fee": "₹1350" },
+                    { "name": "Dr. Aruna Reddy", "experience": "14+ years", "fee": "₹1250" }
+                ]
+            }
+        },
+        "Amrita Hospital Kochi": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Lakeshore Hospital Kochi": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Rajagiri Hospital Kochi": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "PVS Hospital Kochi": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        }
+    }
+},"Maharashtra": {
+    "hospitals": {
+        "Kokilaben Dhirubhai Ambani Hospital Mumbai": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Lilavati Hospital Mumbai": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Fortis Hospital Mumbai": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Nanavati Hospital Mumbai": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Sahyadri Hospitals Pune": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        }
+    }
+},
+"Uttar Pradesh": {
+    "hospitals": {
+        "Fortis Hospital Noida": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Apollo Hospital Lucknow": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Max Hospital Noida": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Medanta Lucknow": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Yashoda Hospital Ghaziabad": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        }
+    }
+},"Gujarat": {
+    "hospitals": {
+        "Apollo Hospital Ahmedabad": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Sterling Hospital Ahmedabad": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "CIMS Hospital Ahmedabad": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Zydus Hospital Ahmedabad": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Shalby Hospital Ahmedabad": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        }
+    }
+},"Rajasthan": {
+    "hospitals": {
+        "Fortis Escorts Hospital Jaipur": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Manipal Hospital Jaipur": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Sawai Man Singh Hospital Jaipur": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Apex Hospital Jaipur": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Eternal Hospital Jaipur": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Rajesh Khanna", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Mehta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arvind Narayan", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Surya Prakash", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vishal Reddy", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Priya Sharma", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Nandini Rao", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Madhavi Nair", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Venkat Prabhu", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Laxmi Shankar", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Sanjay Patel", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Mahesh Reddy", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Arun Nambiar", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Vijay Narayan", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Prakash Menon", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Anjali Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Sunita Reddy", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ravi Shankar", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Harini Menon", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Shravan Kumar", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Neha Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rekha Reddy", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Suresh Nambiar", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Hemanth Kumar", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Kiran Subramanian", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Lakshmi Narayan", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Vishwanath Iyer", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Kavitha Menon", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Naveen Raj", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Aruna Reddy", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        }
+    }
+},"Madhya Pradesh": {
+    "hospitals": {
+        "Bansal Hospital Bhopal": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Anil Verma", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Sunita Gupta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rajesh Tiwari", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Priyanka Singh", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vikram Patel", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Ramesh Kumar", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Anjali Sharma", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Sanjay Mishra", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Meena Yadav", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Arvind Dubey", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Pradeep Singh", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Kavita Desai", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rakesh Jain", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Anurag Sharma", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Neeraj Gupta", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Sunil Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Reena Kapoor", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ashok Malhotra", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Shalini Singh", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Rajiv Choudhary", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Anjali Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Ravi Shukla", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Priya Verma", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Sanjay Tiwari", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Neha Singh", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Rajesh Yadav", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Sunita Mishra", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Anil Gupta", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Pooja Sharma", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Rakesh Verma", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "CHL Hospitals Indore": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Vikas Sharma", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Anjali Singh", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rajesh Dubey", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Priya Tiwari", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Sanjay Verma", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Ramesh Choudhary", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Anjali Gupta", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Sanjay Mishra", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Meena Yadav", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Arvind Dubey", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Pradeep Singh", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Kavita Desai", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rakesh Jain", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Anurag Sharma", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Neeraj Gupta", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Sunil Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Reena Kapoor", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ashok Malhotra", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Shalini Singh", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Rajiv Choudhary", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Anjali Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Ravi Shukla", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Priya Verma", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Sanjay Tiwari", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Neha Singh", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Rajesh Yadav", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Sunita Mishra", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Anil Gupta", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Pooja Sharma", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Rakesh Verma", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Aurobindo Hospital Indore": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Anil Verma", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Sunita Gupta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rajesh Tiwari", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Priyanka Singh", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vikram Patel", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Ramesh Kumar", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Anjali Sharma", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Sanjay Mishra", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Meena Yadav", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Arvind Dubey", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Pradeep Singh", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Kavita Desai", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rakesh Jain", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Anurag Sharma", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Neeraj Gupta", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Sunil Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Reena Kapoor", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ashok Malhotra", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Shalini Singh", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Rajiv Choudhary", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Anjali Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Ravi Shukla", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Priya Verma", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Sanjay Tiwari", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Neha Singh", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Rajesh Yadav", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Sunita Mishra", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Anil Gupta", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Pooja Sharma", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Rakesh Verma", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "Choithram Hospital Indore": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Anil Verma", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Sunita Gupta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rajesh Tiwari", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Priyanka Singh", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vikram Patel", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Ramesh Kumar", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Anjali Sharma", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Sanjay Mishra", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Meena Yadav", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Arvind Dubey", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Pradeep Singh", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Kavita Desai", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rakesh Jain", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Anurag Sharma", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Neeraj Gupta", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Sunil Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Reena Kapoor", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ashok Malhotra", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Shalini Singh", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Rajiv Choudhary", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Anjali Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Ravi Shukla", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Priya Verma", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Sanjay Tiwari", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Neha Singh", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Rajesh Yadav", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Sunita Mishra", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Anil Gupta", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Pooja Sharma", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Rakesh Verma", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        },
+        "RKDF Hospital Bhopal": {
+            "specializations": ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+            "doctors": {
+                "Cardiology": [
+                    { "name": "Dr. Anil Verma", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Sunita Gupta", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rajesh Tiwari", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Priyanka Singh", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Vikram Patel", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Neurology": [
+                    { "name": "Dr. Ramesh Kumar", "experience": "19+ years", "fee": "₹2900" },
+                    { "name": "Dr. Anjali Sharma", "experience": "17+ years", "fee": "₹2700" },
+                    { "name": "Dr. Sanjay Mishra", "experience": "15+ years", "fee": "₹2500" },
+                    { "name": "Dr. Meena Yadav", "experience": "13+ years", "fee": "₹2300" },
+                    { "name": "Dr. Arvind Dubey", "experience": "11+ years", "fee": "₹2100" }
+                ],
+                "Orthopedics": [
+                    { "name": "Dr. Pradeep Singh", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Kavita Desai", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Rakesh Jain", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Anurag Sharma", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Neeraj Gupta", "experience": "12+ years", "fee": "₹2200" }
+                ],
+                "Oncology": [
+                    { "name": "Dr. Sunil Mehta", "experience": "22+ years", "fee": "₹3200" },
+                    { "name": "Dr. Reena Kapoor", "experience": "20+ years", "fee": "₹3000" },
+                    { "name": "Dr. Ashok Malhotra", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Shalini Singh", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Rajiv Choudhary", "experience": "14+ years", "fee": "₹2400" }
+                ],
+                "Dermatology": [
+                    { "name": "Dr. Anjali Kapoor", "experience": "18+ years", "fee": "₹2800" },
+                    { "name": "Dr. Ravi Shukla", "experience": "16+ years", "fee": "₹2600" },
+                    { "name": "Dr. Priya Verma", "experience": "14+ years", "fee": "₹2400" },
+                    { "name": "Dr. Sanjay Tiwari", "experience": "12+ years", "fee": "₹2200" },
+                    { "name": "Dr. Neha Singh", "experience": "10+ years", "fee": "₹2000" }
+                ],
+                "General": [
+                    { "name": "Dr. Rajesh Yadav", "experience": "20+ years", "fee": "₹1500" },
+                    { "name": "Dr. Sunita Mishra", "experience": "18+ years", "fee": "₹1400" },
+                    { "name": "Dr. Anil Gupta", "experience": "16+ years", "fee": "₹1300" },
+                    { "name": "Dr. Pooja Sharma", "experience": "14+ years", "fee": "₹1250" },
+                    { "name": "Dr. Rakesh Verma", "experience": "12+ years", "fee": "₹1200" }
+                ]
+            }
+        }
+    }
+}
+        }
 
-        let booking = {
+            let booking = {
             state: null,
             hospital: null,
             specialization: null,
