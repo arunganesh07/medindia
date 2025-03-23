@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedIndia - Doctor Appointment System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.min.js"></script>
+    <style>
+        :root {
+            --primary: #0dba16c5;
+            --secondary: #31db13;
+            --accent: #FF6B6B;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --error: #F44336;
+            --text: #2D3436;
+            --bg: #d9dde3d3;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s ease;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --medical-green: #4CAF50;
+            --medical-blue: #29cf04;
+            --medical-red: #FF6B6B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            animation: fadeInDown 1s ease;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            animation: bounceIn 1s ease;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            position: relative;
+            animation: fadeIn 1s ease;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #cbd5e1;
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+
+        .step {
+            width: 18%;
+            padding: 1rem;
+            text-align: center;
+            background: white;
+            border-radius: 8px;
+            z-index: 1;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease;
+        }
+
+        .step.active {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .step.completed {
+            background: var(--success);
+            color: white;
+        }
+
+        .step i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .step.active i {
+            color: white;
+        }
+
+        .selection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+            animation: fadeIn 1s ease;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            box-shadow: var(--shadow);
+            animation: fadeInUp 1s ease;
+        }
+
+        .card.selected {
+            border-color: var(--primary);
+            background: #f0f8ff;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .doctor-specialty {
+            color: var(--primary);
+            font-weight: 500;
+            margin: 0.5rem 0;
+        }
+
+        .doctor-experience {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .booking-form {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.5rem;
+            transition: var(--transition);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(42, 134, 255, 0.2);
+        }
+
+        .confirmation {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin: 2rem auto;
+            animation: fadeIn 1s ease;
+        }
+
+        .confirmation-details {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: left;
+            animation: fadeInUp 1s ease;
+        }
+
+        .confirmation-details p {
+            margin: 0.5rem 0;
+        }
+
+        .confirmation i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .navigation-buttons button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .navigation-buttons button:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .navigation-buttons button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        button:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .slot-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            animation: fadeIn 1s ease;
+        }
+
+        .slot {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #f9f9f9;
+            transition: var(--transition);
+            animation: fadeInUp 1s ease;
+        }
+
+        .slot.booked {
+            background-color: var(--accent);
+            color: white;
+            cursor: not-allowed;
+        }
+
+        .slot.selected {
+            background-color: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .heartbeat {
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .rotate {
+            animation: rotate 2s linear infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .bounce {
+            animation: bounce 1s infinite;
+        }
+
+        .glow {
+            box-shadow: 0 0 10px rgba(42, 134, 255, 0.5);
+        }
+
+        .animated-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background-size: 200% 200%;
+            animation: gradientAnimation 5s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>MedIndia</h1>
+            <p>Book Appointments with India's Top Doctors</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+            <div class="step active" id="step1">State</div>
+            <div class="step" id="step2">Hospital</div>
+            <div class="step" id="step3">Specialization</div>
+            <div class="step" id="step4">Doctor</div>
+            <div class="step" id="step5">Details</div>
+            <div class="step" id="step6">Confirm</div>
+        </div>
+
+        <!-- State Selection -->
+        <div id="stateSection">
+            <h2>Select State</h2>
+            <div class="selection-grid">
+                <div class="card" data-state="Tamil Nadu" onclick="selectState(this)">
+                    <h3>Tamil Nadu</h3>
+                </div>
+                <div class="card" data-state="Karnataka" onclick="selectState(this)">
+                    <h3>Karnataka</h3>
+                </div>
+                <div class="card" data-state="Telangana" onclick="selectState(this)">
+                    <h3>Telangana</h3>
+                </div>
+                <div class="card" data-state="Kerala" onclick="selectState(this)">
+                    <h3>Kerala</h3>
+                </div>
+            </div>
+            <div class="navigation-buttons">
+                <button onclick="previousPage()" disabled>Previous</button>
+                <button onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Hospital Selection -->
+        <div id="hospitalSection" class="hidden">
+            <h2>Select Hospital</h2>
+            <div class="selection-grid" id="hospitalGrid">
+                <!-- Hospitals will be populated here -->
+            </div>
+            <div class="navigation-buttons">
+                <button onclick="previousPage()">Previous</button>
+                <button onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Specialization Selection -->
+        <div id="specializationSection" class="hidden">
+            <h2>Select Specialization</h2>
+            <div class="selection-grid" id="specializationGrid">
+                <!-- Specializations will be populated here -->
+            </div>
+            <div class="navigation-buttons">
+                <button onclick="previousPage()">Previous</button>
+                <button onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Doctor Selection -->
+        <div id="doctorSection" class="hidden">
+            <h2>Select Doctor</h2>
+            <div class="selection-grid" id="doctorGrid">
+                <!-- Doctors will be populated here -->
+            </div>
+            <div class="navigation-buttons">
+                <button onclick="previousPage()">Previous</button>
+                <button onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Patient Details Form -->
+        <div id="patientDetailsSection" class="hidden">
+            <h2>Patient Details</h2>
+            <form id="patientForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="patientName" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label>Reason for Visit</label>
+                    <textarea id="reason" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Appointment Date</label>
+                    <input type="date" id="appointmentDate" required onchange="loadSlots()">
+                </div>
+                <div class="form-group">
+                    <label>Select Time Slot</label>
+                    <select id="timeSlot" required onchange="loadSlots()">
+                        <option>09:00 AM</option>
+                        <option>09:30 AM</option>
+                        <option>10:00 AM</option>
+                        <option>10:30 AM</option>
+                        <option>11:00 AM</option>
+                        <option>11:30 AM</option>
+                        <option>12:00 PM</option>
+                        <option>12:30 PM</option>
+                        <option>01:00 PM</option>
+                        <option>01:30 PM</option>
+                        <option>02:00 PM</option>
+                        <option>02:30 PM</option>
+                        <option>03:00 PM</option>
+                        <option>03:30 PM</option>
+                        <option>04:00 PM</option>
+                        <option>04:30 PM</option>
+                        <option>05:00 PM</option>
+                        <option>05:30 PM</option>
+                        <option>06:00 PM</option>
+                        <option>06:30 PM</option>
+                        <option>07:00 PM</option>
+                        <option>07:30 PM</option>
+                        <option>08:00 PM</option>
+                        <option>08:30 PM</option>
+                        <option>09:00 PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Select Sub-Slot</label>
+                    <div class="slot-container" id="slotContainer">
+                        <!-- Sub-slots will be populated here -->
+                    </div>
+                </div>
+            </form>
+            <div class="navigation-buttons">
+                <button onclick="previousPage()">Previous</button>
+                <button onclick="nextPage()">Next</button>
+            </div>
+        </div>
+
+        <!-- Confirmation Section -->
+        <div id="confirmationSection" class="hidden">
+            <div class="confirmation">
+                <h2>🎉 Booking Confirmed!</h2>
+                <div class="confirmation-details">
+                    <p>Appointment ID: <strong id="appointmentId"></strong></p>
+                    <p>Patient: <span id="confirmPatient"></span></p>
+                    <p>Hospital: <span id="confirmHospital"></span></p>
+                    <p>Doctor: <span id="confirmDoctor"></span></p>
+                    <p>Date: <span id="confirmDate"></span></p>
+                    <p>Time: <span id="confirmTime"></span></p>
+                    <p>Reason: <span id="confirmReason"></span></p>
+                    <p>Amount Paid: ₹<span id="confirmAmount"></span></p>
+                </div>
+                <button onclick="confirmAndProceed()">Confirm & Proceed</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data structure for states, hospitals, specializations, and doctors
+        const statesData = {
+            "Tamil Nadu": {
+                hospitals: {
+                    "Apollo Chennai": {
+                        specializations: ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+                        doctors: {
+                            "Cardiology": [
+                                { name: "Dr. Rajesh Khanna", experience: "15+ years", fee: "₹1500" },
+                                { name: "Dr. Anjali Mehta", experience: "20+ years", fee: "₹3000" },
+                                { name: "Dr. Arvind Narayan", experience: "18+ years", fee: "₹2500" },
+                                { name: "Dr. Surya Prakash", experience: "16+ years", fee: "₹2200" },
+                                { name: "Dr. Vishal Reddy", experience: "14+ years", fee: "₹1900" },
+                                { name: "Dr. Akshay Nair", experience: "17+ years", fee: "₹2300" },
+                                { name: "Dr. Kiran Kumar", experience: "12+ years", fee: "₹1800" },
+                                { name: "Dr. Devendra Rao", experience: "13+ years", fee: "₹2000" },
+                                { name: "Dr. Manoj Iyer", experience: "15+ years", fee: "₹2100" },
+                                { name: "Dr. Naveen Menon", experience: "10+ years", fee: "₹1500" }
+                            ],
+                            "Neurology": [
+                                { name: "Dr. Priya Sharma", experience: "12+ years", fee: "₹2000" },
+                                { name: "Dr. Nandini Rao", experience: "14+ years", fee: "₹2500" },
+                                { name: "Dr. Madhavi Nair", experience: "16+ years", fee: "₹2700" },
+                                { name: "Dr. Venkat Prabhu", experience: "18+ years", fee: "₹2900" },
+                                { name: "Dr. Laxmi Shankar", experience: "15+ years", fee: "₹2400" },
+                                { name: "Dr. Shyam Sunder", experience: "17+ years", fee: "₹2600" },
+                                { name: "Dr. Rakesh Iyer", experience: "11+ years", fee: "₹2100" },
+                                { name: "Dr. Swathi Narayan", experience: "19+ years", fee: "₹3000" },
+                                { name: "Dr. Supriya Rajan", experience: "10+ years", fee: "₹1900" },
+                                { name: "Dr. Ganesh Varma", experience: "13+ years", fee: "₹2200" }
+                            ],
+                            "Orthopedics": [
+                                { name: "Dr. Sanjay Patel", experience: "18+ years", fee: "₹2500" },
+                                { name: "Dr. Mahesh Reddy", experience: "19+ years", fee: "₹2800" },
+                                { name: "Dr. Arun Nambiar", experience: "12+ years", fee: "₹2300" },
+                                { name: "Dr. Vijay Narayan", experience: "17+ years", fee: "₹2700" },
+                                { name: "Dr. Prakash Menon", experience: "16+ years", fee: "₹2600" },
+                                { name: "Dr. Deepak Swamy", experience: "20+ years", fee: "₹2900" },
+                                { name: "Dr. Naveen Subramanian", experience: "14+ years", fee: "₹2400" },
+                                { name: "Dr. Bhaskar Krishna", experience: "15+ years", fee: "₹2500" },
+                                { name: "Dr. Mukesh Rajan", experience: "11+ years", fee: "₹2100" },
+                                { name: "Dr. Karthik Gopal", experience: "13+ years", fee: "₹2200" }
+                            ],
+                            "Oncology": [
+                                { name: "Dr. Anjali Mehta", experience: "20+ years", fee: "₹3000" },
+                                { name: "Dr. Sunita Reddy", experience: "16+ years", fee: "₹2200" },
+                                { name: "Dr. Ravi Shankar", experience: "18+ years", fee: "₹2800" },
+                                { name: "Dr. Harini Menon", experience: "12+ years", fee: "₹2500" },
+                                { name: "Dr. Shravan Kumar", experience: "14+ years", fee: "₹2600" },
+                                { name: "Dr. Sridhar Narayan", experience: "17+ years", fee: "₹2700" },
+                                { name: "Dr. Ranganath Prabhu", experience: "19+ years", fee: "₹2900" },
+                                { name: "Dr. Divya Mohan", experience: "15+ years", fee: "₹2300" },
+                                { name: "Dr. Vishnu Menon", experience: "10+ years", fee: "₹2000" },
+                                { name: "Dr. Yashodha Iyer", experience: "13+ years", fee: "₹2100" }
+                            ],
+                            "Dermatology": [
+                                { name: "Dr. Neha Kapoor", experience: "13+ years", fee: "₹2000" },
+                                { name: "Dr. Rekha Reddy", experience: "16+ years", fee: "₹2400" },
+                                { name: "Dr. Suresh Nambiar", experience: "12+ years", fee: "₹2100" },
+                                { name: "Dr. Hemanth Kumar", experience: "15+ years", fee: "₹2300" },
+                                { name: "Dr. Kiran Subramanian", experience: "18+ years", fee: "₹2500" },
+                                { name: "Dr. Sanjana Iyer", experience: "14+ years", fee: "₹2200" },
+                                { name: "Dr. Ajay Gopal", experience: "17+ years", fee: "₹2600" },
+                                { name: "Dr. Meera Krishna", experience: "19+ years", fee: "₹2800" },
+                                { name: "Dr. Sandhya Mohan", experience: "11+ years", fee: "₹1900" },
+                                { name: "Dr. Mahalakshmi Rao", experience: "10+ years", fee: "₹1800" }
+                            ],
+                            "General": [
+                                { name: "Dr. Lakshmi Narayan", experience: "20+ years", fee: "₹1500" },
+                                { name: "Dr. Vishwanath Iyer", experience: "18+ years", fee: "₹1400" },
+                                { name: "Dr. Kavitha Menon", experience: "12+ years", fee: "₹1300" },
+                                { name: "Dr. Naveen Raj", experience: "15+ years", fee: "₹1350" },
+                                { name: "Dr. Aruna Reddy", experience: "14+ years", fee: "₹1250" },
+                                { name: "Dr. Karthik Rao", experience: "16+ years", fee: "₹1450" },
+                                { name: "Dr. Meenakshi Subramanian", experience: "19+ years", fee: "₹1550" },
+                                { name: "Dr. Rakesh Krishna", experience: "11+ years", fee: "₹1200" },
+                                { name: "Dr. Harsha Varma", experience: "13+ years", fee: "₹1300" },
+                                { name: "Dr. Yamini Prabhu", experience: "10+ years", fee: "₹1100" }
+                            ]
+                        }
+                    },
+                    "Sri Ramachandra Hospital Chennai": {
+                        specializations: ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+                        doctors: {
+                            "Cardiology": [
+                                { name: "Dr. Balaji Srinivasan", experience: "22+ years", fee: "₹3000" },
+                                { name: "Dr. Anand Krishnan", experience: "18+ years", fee: "₹2700" },
+                                { name: "Dr. Priya Narayanan", experience: "16+ years", fee: "₹2500" },
+                                { name: "Dr. Ganesh Raghavan", experience: "14+ years", fee: "₹2400" },
+                                { name: "Dr. Meenakshi Raman", experience: "20+ years", fee: "₹2900" },
+                                { name: "Dr. Aravind Kumar", experience: "17+ years", fee: "₹2600" },
+                                { name: "Dr. Shruthi Venkatesh", experience: "15+ years", fee: "₹2500" },
+                                { name: "Dr. Rajesh Muthuraman", experience: "13+ years", fee: "₹2300" },
+                                { name: "Dr. Kavitha Iyer", experience: "12+ years", fee: "₹2200" },
+                                { name: "Dr. Manikandan Nair", experience: "10+ years", fee: "₹2000" }
+                            ],
+                            "Neurology": [
+                                { name: "Dr. Ramesh Balan", experience: "21+ years", fee: "₹3100" },
+                                { name: "Dr. Anirudh Venkatesan", experience: "19+ years", fee: "₹2900" },
+                                { name: "Dr. Srividya Raman", experience: "17+ years", fee: "₹2800" },
+                                { name: "Dr. Karthik Nair", experience: "14+ years", fee: "₹2500" },
+                                { name: "Dr. Sujatha Iyer", experience: "13+ years", fee: "₹2400" },
+                                { name: "Dr. Pranav Srinivasan", experience: "16+ years", fee: "₹2600" },
+                                { name: "Dr. Dinesh Kumar", experience: "12+ years", fee: "₹2300" },
+                                { name: "Dr. Yamini Rajan", experience: "11+ years", fee: "₹2200" },
+                                { name: "Dr. Swapna Krishnan", experience: "15+ years", fee: "₹2700" },
+                                { name: "Dr. Charan Raghavan", experience: "10+ years", fee: "₹2000" }
+                            ],
+                            "Orthopedics": [
+                                { name: "Dr. Hari Prasad", experience: "19+ years", fee: "₹2800" },
+                                { name: "Dr. Lakshmi Narayanan", experience: "18+ years", fee: "₹2700" },
+                                { name: "Dr. Rajasekar Iyer", experience: "16+ years", fee: "₹2600" },
+                                { name: "Dr. Vishnu Krishnan", experience: "15+ years", fee: "₹2500" },
+                                { name: "Dr. Anitha Balakrishnan", experience: "14+ years", fee: "₹2400" },
+                                { name: "Dr. Senthil Kumar", experience: "13+ years", fee: "₹2300" },
+                                { name: "Dr. Ganapathi Rao", experience: "12+ years", fee: "₹2200" },
+                                { name: "Dr. Arjun Menon", experience: "11+ years", fee: "₹2100" },
+                                { name: "Dr. Radha Shankar", experience: "10+ years", fee: "₹2000" },
+                                { name: "Dr. Dhananjay Raghavan", experience: "17+ years", fee: "₹2600" }
+                            ],
+                            "Oncology": [
+                                { name: "Dr. Karthikeyan Nair", experience: "22+ years", fee: "₹3200" },
+                                { name: "Dr. Deepa Ramesh", experience: "19+ years", fee: "₹3000" },
+                                { name: "Dr. Mohan Krishnan", experience: "17+ years", fee: "₹2800" },
+                                { name: "Dr. Swetha Rajan", experience: "15+ years", fee: "₹2600" },
+                                { name: "Dr. Sanjay Prakash", experience: "13+ years", fee: "₹2400" },
+                                { name: "Dr. Priyanka Vishwanath", experience: "12+ years", fee: "₹2300" },
+                                { name: "Dr. Ajay Menon", experience: "11+ years", fee: "₹2200" },
+                                { name: "Dr. Aravind Srinivas", experience: "10+ years", fee: "₹2100" },
+                                { name: "Dr. Meena Subramaniam", experience: "16+ years", fee: "₹2700" },
+                                { name: "Dr. Aditya Narayanan", experience: "14+ years", fee: "₹2500" }
+                            ],
+                            "Dermatology": [
+                                { name: "Dr. Nisha Karthik", experience: "20+ years", fee: "₹2500" },
+                                { name: "Dr. Prakash Raj", experience: "18+ years", fee: "₹2400" },
+                                { name: "Dr. Ananya Raghavan", experience: "16+ years", fee: "₹2300" },
+                                { name: "Dr. Vishal Kumar", experience: "14+ years", fee: "₹2200" },
+                                { name: "Dr. Rajalakshmi Narayan", experience: "12+ years", fee: "₹2100" },
+                                { name: "Dr. Aravind Venkatesh", experience: "10+ years", fee: "₹2000" },
+                                { name: "Dr. Yamini Krishnan", experience: "19+ years", fee: "₹2700" },
+                                { name: "Dr. Vijay Kumar", experience: "17+ years", fee: "₹2600" },
+                                { name: "Dr. Sridhar Ramesh", experience: "15+ years", fee: "₹2500" },
+                                { name: "Dr. Meera Iyer", experience: "11+ years", fee: "₹2200" }
+                            ],
+                            "General": [
+                                { name: "Dr. Shyam Sundar", experience: "22+ years", fee: "₹1800" },
+                                { name: "Dr. Lavanya Krishna", experience: "20+ years", fee: "₹1700" },
+                                { name: "Dr. Ramesh Balaji", experience: "18+ years", fee: "₹1600" },
+                                { name: "Dr. Swathi Menon", experience: "16+ years", fee: "₹1500" },
+                                { name: "Dr. Arjun Narayanan", experience: "14+ years", fee: "₹1400" },
+                                { name: "Dr. Deepika Raghavan", experience: "13+ years", fee: "₹1350" },
+                                { name: "Dr. Naveen Prakash", experience: "12+ years", fee: "₹1300" },
+                                { name: "Dr. Priya Iyer", experience: "11+ years", fee: "₹1250" },
+                                { name: "Dr. Raj Kumar", experience: "10+ years", fee: "₹1200" },
+                                { name: "Dr. Yamini Varma", experience: "15+ years", fee: "₹1450" }
+                            ]
+                        }
+                    }
+                }
+            },
+            "Karnataka": {
+                hospitals: {
+                    "Fortis Bengaluru": {
+                        specializations: ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+                        doctors: {
+                            "Cardiology": [
+                                { name: "Dr. Raghavendra Rao", experience: "16+ years", fee: "₹2200" },
+                                { name: "Dr. Sandeep Narayan", experience: "14+ years", fee: "₹2100" },
+                                { name: "Dr. Bharath Kumar", experience: "18+ years", fee: "₹2500" },
+                                { name: "Dr. Anirudh Shankar", experience: "12+ years", fee: "₹2000" },
+                                { name: "Dr. Charan Iyer", experience: "15+ years", fee: "₹2300" },
+                                { name: "Dr. Praveen Reddy", experience: "17+ years", fee: "₹2400" },
+                                { name: "Dr. Ganesh Subramanian", experience: "11+ years", fee: "₹1900" },
+                                { name: "Dr. Arjun Varma", experience: "13+ years", fee: "₹1950" },
+                                { name: "Dr. Sriram Menon", experience: "10+ years", fee: "₹1800" },
+                                { name: "Dr. Rajiv Nair", experience: "19+ years", fee: "₹2700" }
+                            ],
+                            "Neurology": [
+                                { name: "Dr. Vishal Shankar", experience: "15+ years", fee: "₹2500" },
+                                { name: "Dr. Nitin Krishna", experience: "18+ years", fee: "₹2800" },
+                                { name: "Dr. Arvind Rao", experience: "12+ years", fee: "₹2100" },
+                                { name: "Dr. Srikanth Narayan", experience: "16+ years", fee: "₹2600" },
+                                { name: "Dr. Ramesh Iyer", experience: "17+ years", fee: "₹2700" },
+                                { name: "Dr. Meghana Reddy", experience: "14+ years", fee: "₹2200" },
+                                { name: "Dr. Swathi Prakash", experience: "10+ years", fee: "₹2000" },
+                                { name: "Dr. Kalyan Menon", experience: "11+ years", fee: "₹2300" },
+                                { name: "Dr. Pranav Nambiar", experience: "19+ years", fee: "₹2900" },
+                                { name: "Dr. Yashoda Rao", experience: "13+ years", fee: "₹2400" }
+                            ],
+                            "Orthopedics": [
+                                { name: "Dr. Narayan Prabhu", experience: "16+ years", fee: "₹2600" },
+                                { name: "Dr. Dinesh Menon", experience: "18+ years", fee: "₹2800" },
+                                { name: "Dr. Raghav Krishna", experience: "12+ years", fee: "₹2200" },
+                                { name: "Dr. Suresh Nair", experience: "14+ years", fee: "₹2400" },
+                                { name: "Dr. Pradeep Varma", experience: "19+ years", fee: "₹2900" },
+                                { name: "Dr. Rajan Subramanian", experience: "15+ years", fee: "₹2500" },
+                                { name: "Dr. Vinod Kumar", experience: "11+ years", fee: "₹2100" },
+                                { name: "Dr. Anurag Reddy", experience: "13+ years", fee: "₹2300" },
+                                { name: "Dr. Yogesh Rao", experience: "10+ years", fee: "₹2000" },
+                                { name: "Dr. Mahendra Iyer", experience: "17+ years", fee: "₹2700" }
+                            ],
+                            "Oncology": [
+                                { name: "Dr. Harsha Varma", experience: "20+ years", fee: "₹3000" },
+                                { name: "Dr. Lakshmi Rao", experience: "16+ years", fee: "₹2700" },
+                                { name: "Dr. Rajesh Shankar", experience: "18+ years", fee: "₹2900" },
+                                { name: "Dr. Vijay Narayan", experience: "14+ years", fee: "₹2500" },
+                                { name: "Dr. Kavita Menon", experience: "12+ years", fee: "₹2300" },
+                                { name: "Dr. Arun Nambiar", experience: "15+ years", fee: "₹2600" },
+                                { name: "Dr. Meera Krishna", experience: "11+ years", fee: "₹2200" },
+                                { name: "Dr. Sanjay Reddy", experience: "13+ years", fee: "₹2400" },
+                                { name: "Dr. Swarna Iyer", experience: "19+ years", fee: "₹3100" },
+                                { name: "Dr. Yuvraj Subramanian", experience: "10+ years", fee: "₹2000" }
+                            ],
+                            "Dermatology": [
+                                { name: "Dr. Divya Nair", experience: "15+ years", fee: "₹2200" },
+                                { name: "Dr. Arpita Shankar", experience: "18+ years", fee: "₹2500" },
+                                { name: "Dr. Sandeep Menon", experience: "14+ years", fee: "₹2300" },
+                                { name: "Dr. Nandita Rao", experience: "16+ years", fee: "₹2600" },
+                                { name: "Dr. Ajay Krishna", experience: "12+ years", fee: "₹2000" },
+                                { name: "Dr. Vaishnavi Reddy", experience: "17+ years", fee: "₹2700" },
+                                { name: "Dr. Kumar Iyer", experience: "19+ years", fee: "₹2800" },
+                                { name: "Dr. Shweta Narayan", experience: "11+ years", fee: "₹2100" },
+                                { name: "Dr. Aditya Varma", experience: "10+ years", fee: "₹1900" },
+                                { name: "Dr. Pooja Prakash", experience: "13+ years", fee: "₹2400" }
+                            ],
+                            "General": [
+                                { name: "Dr. Lakshmi Menon", experience: "20+ years", fee: "₹1500" },
+                                { name: "Dr. Anand Kumar", experience: "18+ years", fee: "₹1400" },
+                                { name: "Dr. Priyanka Narayan", experience: "12+ years", fee: "₹1300" },
+                                { name: "Dr. Mukesh Iyer", experience: "15+ years", fee: "₹1350" },
+                                { name: "Dr. Rashmi Reddy", experience: "14+ years", fee: "₹1250" },
+                                { name: "Dr. Krishna Subramanian", experience: "16+ years", fee: "₹1450" },
+                                { name: "Dr. Ramya Nambiar", experience: "19+ years", fee: "₹1550" },
+                                { name: "Dr. Karthik Rao", experience: "11+ years", fee: "₹1200" },
+                                { name: "Dr. Suresh Varma", experience: "13+ years", fee: "₹1300" },
+                                { name: "Dr. Yamini Prabhu", experience: "10+ years", fee: "₹1100" }
+                            ]
+                        }
+                    },
+                    "Apollo Bengaluru": {
+                        specializations: ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+                        doctors: {
+                            "Cardiology": [
+                                { name: "Dr. Prakash Rao", experience: "18+ years", fee: "₹2500" },
+                                { name: "Dr. Vishnu Narayan", experience: "16+ years", fee: "₹2300" },
+                                { name: "Dr. Suman Reddy", experience: "14+ years", fee: "₹2200" },
+                                { name: "Dr. Karthik Iyer", experience: "12+ years", fee: "₹2100" },
+                                { name: "Dr. Ananya Menon", experience: "19+ years", fee: "₹2700" },
+                                { name: "Dr. Ganesh Kumar", experience: "17+ years", fee: "₹2600" },
+                                { name: "Dr. Deepak Subramanian", experience: "15+ years", fee: "₹2400" },
+                                { name: "Dr. Shruti Varma", experience: "10+ years", fee: "₹2000" },
+                                { name: "Dr. Arjun Nair", experience: "11+ years", fee: "₹1950" },
+                                { name: "Dr. Vijay Prabhu", experience: "20+ years", fee: "₹2800" }
+                            ],
+                            "Neurology": [
+                                { name: "Dr. Rajan Krishna", experience: "15+ years", fee: "₹2600" },
+                                { name: "Dr. Vikram Narayan", experience: "18+ years", fee: "₹2800" },
+                                { name: "Dr. Priya Reddy", experience: "12+ years", fee: "₹2200" },
+                                { name: "Dr. Sridhar Nair", experience: "16+ years", fee: "₹2700" },
+                                { name: "Dr. Sanjana Menon", experience: "14+ years", fee: "₹2300" },
+                                { name: "Dr. Pranav Rao", experience: "17+ years", fee: "₹2900" },
+                                { name: "Dr. Meenakshi Iyer", experience: "10+ years", fee: "₹2100" },
+                                { name: "Dr. Kalyani Subramanian", experience: "11+ years", fee: "₹2000" },
+                                { name: "Dr. Dinesh Prakash", experience: "19+ years", fee: "₹3100" },
+                                { name: "Dr. Yamini Varma", experience: "13+ years", fee: "₹2400" }
+                            ],
+                            "Orthopedics": [
+                                { name: "Dr. Aravind Narayan", experience: "18+ years", fee: "₹2700" },
+                                { name: "Dr. Charan Krishna", experience: "15+ years", fee: "₹2500" },
+                                { name: "Dr. Naveen Reddy", experience: "12+ years", fee: "₹2300" },
+                                { name: "Dr. Shravan Iyer", experience: "14+ years", fee: "₹2200" },
+                                { name: "Dr. Surya Menon", experience: "19+ years", fee: "₹2900" },
+                                { name: "Dr. Ramesh Rao", experience: "16+ years", fee: "₹2600" },
+                                { name: "Dr. Karthika Subramanian", experience: "11+ years", fee: "₹2100" },
+                                { name: "Dr. Manjunath Varma", experience: "10+ years", fee: "₹2000" },
+                                { name: "Dr. Ashok Prabhu", experience: "13+ years", fee: "₹2400" },
+                                { name: "Dr. Sandeep Nair", experience: "17+ years", fee: "₹2800" }
+                            ],
+                            "Oncology": [
+                                { name: "Dr. Vishal Menon", experience: "20+ years", fee: "₹3200" },
+                                { name: "Dr. Rajesh Kumar", experience: "18+ years", fee: "₹3000" },
+                                { name: "Dr. Sunanda Rao", experience: "15+ years", fee: "₹2700" },
+                                { name: "Dr. Megha Prakash", experience: "12+ years", fee: "₹2400" },
+                                { name: "Dr. Sriram Reddy", experience: "14+ years", fee: "₹2500" },
+                                { name: "Dr. Arjun Nambiar", experience: "16+ years", fee: "₹2900" },
+                                { name: "Dr. Kiran Subramanian", experience: "10+ years", fee: "₹2100" },
+                                { name: "Dr. Swapna Iyer", experience: "11+ years", fee: "₹2200" },
+                                { name: "Dr. Pavan Narayan", experience: "13+ years", fee: "₹2300" },
+                                { name: "Dr. Anil Varma", experience: "19+ years", fee: "₹3100" }
+                            ],
+                            "Dermatology": [
+                                { name: "Dr. Lavanya Krishna", experience: "15+ years", fee: "₹2200" },
+                                { name: "Dr. Karthik Reddy", experience: "18+ years", fee: "₹2500" },
+                                { name: "Dr. Shruti Nair", experience: "14+ years", fee: "₹2300" },
+                                { name: "Dr. Disha Subramanian", experience: "16+ years", fee: "₹2600" },
+                                { name: "Dr. Ashwin Kumar", experience: "12+ years", fee: "₹2000" },
+                                { name: "Dr. Nisha Varma", experience: "17+ years", fee: "₹2700" },
+                                { name: "Dr. Kumar Narayan", experience: "19+ years", fee: "₹2800" },
+                                { name: "Dr. Pooja Iyer", experience: "11+ years", fee: "₹2100" },
+                                { name: "Dr. Pradeep Rao", experience: "10+ years", fee: "₹1900" },
+                                { name: "Dr. Yamini Prakash", experience: "13+ years", fee: "₹2400" }
+                            ],
+                            "General": [
+                                { name: "Dr. Latha Menon", experience: "20+ years", fee: "₹1600" },
+                                { name: "Dr. Ramesh Kumar", experience: "18+ years", fee: "₹1500" },
+                                { name: "Dr. Priyanka Rao", experience: "12+ years", fee: "₹1400" },
+                                { name: "Dr. Mukesh Narayan", experience: "15+ years", fee: "₹1450" },
+                                { name: "Dr. Rashmi Reddy", experience: "14+ years", fee: "₹1350" },
+                                { name: "Dr. Krishna Subramanian", experience: "16+ years", fee: "₹1550" },
+                                { name: "Dr. Ramya Nambiar", experience: "19+ years", fee: "₹1650" },
+                                { name: "Dr. Karthik Varma", experience: "11+ years", fee: "₹1300" },
+                                { name: "Dr. Suresh Prakash", experience: "13+ years", fee: "₹1400" },
+                                { name: "Dr. Yamini Iyer", experience: "10+ years", fee: "₹1250" }
+                            ]
+                        }
+                    }
+                }
+            },
+            "Telangana": {
+                hospitals: {
+                    "Apollo Hyderabad": {
+                        specializations: ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+                        doctors: {
+                            "Cardiology": [
+                                { name: "Dr. Rajesh Khanna", experience: "15+ years", fee: "₹1500" },
+                                { name: "Dr. Anjali Mehta", experience: "20+ years", fee: "₹3000" },
+                                { name: "Dr. Arvind Narayan", experience: "18+ years", fee: "₹2500" },
+                                { name: "Dr. Surya Prakash", experience: "16+ years", fee: "₹2200" },
+                                { name: "Dr. Vishal Reddy", experience: "14+ years", fee: "₹1900" },
+                                { name: "Dr. Akshay Nair", experience: "17+ years", fee: "₹2300" },
+                                { name: "Dr. Kiran Kumar", experience: "12+ years", fee: "₹1800" },
+                                { name: "Dr. Devendra Rao", experience: "13+ years", fee: "₹2000" },
+                                { name: "Dr. Manoj Iyer", experience: "15+ years", fee: "₹2100" },
+                                { name: "Dr. Naveen Menon", experience: "10+ years", fee: "₹1500" }
+                            ],
+                            "Neurology": [
+                                { name: "Dr. Priya Sharma", experience: "12+ years", fee: "₹2000" },
+                                { name: "Dr. Nandini Rao", experience: "14+ years", fee: "₹2500" },
+                                { name: "Dr. Madhavi Nair", experience: "16+ years", fee: "₹2700" },
+                                { name: "Dr. Venkat Prabhu", experience: "18+ years", fee: "₹2900" },
+                                { name: "Dr. Laxmi Shankar", experience: "15+ years", fee: "₹2400" },
+                                { name: "Dr. Shyam Sunder", experience: "17+ years", fee: "₹2600" },
+                                { name: "Dr. Rakesh Iyer", experience: "11+ years", fee: "₹2100" },
+                                { name: "Dr. Swathi Narayan", experience: "19+ years", fee: "₹3000" },
+                                { name: "Dr. Supriya Rajan", experience: "10+ years", fee: "₹1900" },
+                                { name: "Dr. Ganesh Varma", experience: "13+ years", fee: "₹2200" }
+                            ],
+                            "Orthopedics": [
+                                { name: "Dr. Sanjay Patel", experience: "18+ years", fee: "₹2500" },
+                                { name: "Dr. Mahesh Reddy", experience: "19+ years", fee: "₹2800" },
+                                { name: "Dr. Arun Nambiar", experience: "12+ years", fee: "₹2300" },
+                                { name: "Dr. Vijay Narayan", experience: "17+ years", fee: "₹2700" },
+                                { name: "Dr. Prakash Menon", experience: "16+ years", fee: "₹2600" },
+                                { name: "Dr. Deepak Swamy", experience: "20+ years", fee: "₹2900" },
+                                { name: "Dr. Naveen Subramanian", experience: "14+ years", fee: "₹2400" },
+                                { name: "Dr. Bhaskar Krishna", experience: "15+ years", fee: "₹2500" },
+                                { name: "Dr. Mukesh Rajan", experience: "11+ years", fee: "₹2100" },
+                                { name: "Dr. Karthik Gopal", experience: "13+ years", fee: "₹2200" }
+                            ],
+                            "Oncology": [
+                                { name: "Dr. Anjali Mehta", experience: "20+ years", fee: "₹3000" },
+                                { name: "Dr. Sunita Reddy", experience: "16+ years", fee: "₹2200" },
+                                { name: "Dr. Ravi Shankar", experience: "18+ years", fee: "₹2800" },
+                                { name: "Dr. Harini Menon", experience: "12+ years", fee: "₹2500" },
+                                { name: "Dr. Shravan Kumar", experience: "14+ years", fee: "₹2600" },
+                                { name: "Dr. Sridhar Narayan", experience: "17+ years", fee: "₹2700" },
+                                { name: "Dr. Ranganath Prabhu", experience: "19+ years", fee: "₹2900" },
+                                { name: "Dr. Divya Mohan", experience: "15+ years", fee: "₹2300" },
+                                { name: "Dr. Vishnu Menon", experience: "10+ years", fee: "₹2000" },
+                                { name: "Dr. Yashodha Iyer", experience: "13+ years", fee: "₹2100" }
+                            ],
+                            "Dermatology": [
+                                { name: "Dr. Neha Kapoor", experience: "13+ years", fee: "₹2000" },
+                                { name: "Dr. Rekha Reddy", experience: "16+ years", fee: "₹2400" },
+                                { name: "Dr. Suresh Nambiar", experience: "12+ years", fee: "₹2100" },
+                                { name: "Dr. Hemanth Kumar", experience: "15+ years", fee: "₹2300" },
+                                { name: "Dr. Kiran Subramanian", experience: "18+ years", fee: "₹2500" },
+                                { name: "Dr. Sanjana Iyer", experience: "14+ years", fee: "₹2200" },
+                                { name: "Dr. Ajay Gopal", experience: "17+ years", fee: "₹2600" },
+                                { name: "Dr. Meera Krishna", experience: "19+ years", fee: "₹2800" },
+                                { name: "Dr. Sandhya Mohan", experience: "11+ years", fee: "₹1900" },
+                                { name: "Dr. Mahalakshmi Rao", experience: "10+ years", fee: "₹1800" }
+                            ],
+                            "General": [
+                                { name: "Dr. Lakshmi Narayan", experience: "20+ years", fee: "₹1500" },
+                                { name: "Dr. Vishwanath Iyer", experience: "18+ years", fee: "₹1400" },
+                                { name: "Dr. Kavitha Menon", experience: "12+ years", fee: "₹1300" },
+                                { name: "Dr. Naveen Raj", experience: "15+ years", fee: "₹1350" },
+                                { name: "Dr. Aruna Reddy", experience: "14+ years", fee: "₹1250" },
+                                { name: "Dr. Karthik Rao", experience: "16+ years", fee: "₹1450" },
+                                { name: "Dr. Meenakshi Subramanian", experience: "19+ years", fee: "₹1550" },
+                                { name: "Dr. Rakesh Krishna", experience: "11+ years", fee: "₹1200" },
+                                { name: "Dr. Harsha Varma", experience: "13+ years", fee: "₹1300" },
+                                { name: "Dr. Yamini Prabhu", experience: "10+ years", fee: "₹1100" }
+                            ]
+                        }
+                    }
+                }
+            },
+            "Kerala": {
+                hospitals: {
+                    "Apollo Kochi": {
+                        specializations: ["Cardiology", "Neurology", "Orthopedics", "Oncology", "Dermatology", "General"],
+                        doctors: {
+                            "Cardiology": [
+                                { name: "Dr. Rajesh Khanna", experience: "15+ years", fee: "₹1500" },
+                                { name: "Dr. Anjali Mehta", experience: "20+ years", fee: "₹3000" },
+                                { name: "Dr. Arvind Narayan", experience: "18+ years", fee: "₹2500" },
+                                { name: "Dr. Surya Prakash", experience: "16+ years", fee: "₹2200" },
+                                { name: "Dr. Vishal Reddy", experience: "14+ years", fee: "₹1900" },
+                                { name: "Dr. Akshay Nair", experience: "17+ years", fee: "₹2300" },
+                                { name: "Dr. Kiran Kumar", experience: "12+ years", fee: "₹1800" },
+                                { name: "Dr. Devendra Rao", experience: "13+ years", fee: "₹2000" },
+                                { name: "Dr. Manoj Iyer", experience: "15+ years", fee: "₹2100" },
+                                { name: "Dr. Naveen Menon", experience: "10+ years", fee: "₹1500" }
+                            ],
+                            "Neurology": [
+                                { name: "Dr. Priya Sharma", experience: "12+ years", fee: "₹2000" },
+                                { name: "Dr. Nandini Rao", experience: "14+ years", fee: "₹2500" },
+                                { name: "Dr. Madhavi Nair", experience: "16+ years", fee: "₹2700" },
+                                { name: "Dr. Venkat Prabhu", experience: "18+ years", fee: "₹2900" },
+                                { name: "Dr. Laxmi Shankar", experience: "15+ years", fee: "₹2400" },
+                                { name: "Dr. Shyam Sunder", experience: "17+ years", fee: "₹2600" },
+                                { name: "Dr. Rakesh Iyer", experience: "11+ years", fee: "₹2100" },
+                                { name: "Dr. Swathi Narayan", experience: "19+ years", fee: "₹3000" },
+                                { name: "Dr. Supriya Rajan", experience: "10+ years", fee: "₹1900" },
+                                { name: "Dr. Ganesh Varma", experience: "13+ years", fee: "₹2200" }
+                            ],
+                            "Orthopedics": [
+                                { name: "Dr. Sanjay Patel", experience: "18+ years", fee: "₹2500" },
+                                { name: "Dr. Mahesh Reddy", experience: "19+ years", fee: "₹2800" },
+                                { name: "Dr. Arun Nambiar", experience: "12+ years", fee: "₹2300" },
+                                { name: "Dr. Vijay Narayan", experience: "17+ years", fee: "₹2700" },
+                                { name: "Dr. Prakash Menon", experience: "16+ years", fee: "₹2600" },
+                                { name: "Dr. Deepak Swamy", experience: "20+ years", fee: "₹2900" },
+                                { name: "Dr. Naveen Subramanian", experience: "14+ years", fee: "₹2400" },
+                                { name: "Dr. Bhaskar Krishna", experience: "15+ years", fee: "₹2500" },
+                                { name: "Dr. Mukesh Rajan", experience: "11+ years", fee: "₹2100" },
+                                { name: "Dr. Karthik Gopal", experience: "13+ years", fee: "₹2200" }
+                            ],
+                            "Oncology": [
+                                { name: "Dr. Anjali Mehta", experience: "20+ years", fee: "₹3000" },
+                                { name: "Dr. Sunita Reddy", experience: "16+ years", fee: "₹2200" },
+                                { name: "Dr. Ravi Shankar", experience: "18+ years", fee: "₹2800" },
+                                { name: "Dr. Harini Menon", experience: "12+ years", fee: "₹2500" },
+                                { name: "Dr. Shravan Kumar", experience: "14+ years", fee: "₹2600" },
+                                { name: "Dr. Sridhar Narayan", experience: "17+ years", fee: "₹2700" },
+                                { name: "Dr. Ranganath Prabhu", experience: "19+ years", fee: "₹2900" },
+                                { name: "Dr. Divya Mohan", experience: "15+ years", fee: "₹2300" },
+                                { name: "Dr. Vishnu Menon", experience: "10+ years", fee: "₹2000" },
+                                { name: "Dr. Yashodha Iyer", experience: "13+ years", fee: "₹2100" }
+                            ],
+                            "Dermatology": [
+                                { name: "Dr. Neha Kapoor", experience: "13+ years", fee: "₹2000" },
+                                { name: "Dr. Rekha Reddy", experience: "16+ years", fee: "₹2400" },
+                                { name: "Dr. Suresh Nambiar", experience: "12+ years", fee: "₹2100" },
+                                { name: "Dr. Hemanth Kumar", experience: "15+ years", fee: "₹2300" },
+                                { name: "Dr. Kiran Subramanian", experience: "18+ years", fee: "₹2500" },
+                                { name: "Dr. Sanjana Iyer", experience: "14+ years", fee: "₹2200" },
+                                { name: "Dr. Ajay Gopal", experience: "17+ years", fee: "₹2600" },
+                                { name: "Dr. Meera Krishna", experience: "19+ years", fee: "₹2800" },
+                                { name: "Dr. Sandhya Mohan", experience: "11+ years", fee: "₹1900" },
+                                { name: "Dr. Mahalakshmi Rao", experience: "10+ years", fee: "₹1800" }
+                            ],
+                            "General": [
+                                { name: "Dr. Lakshmi Narayan", experience: "20+ years", fee: "₹1500" },
+                                { name: "Dr. Vishwanath Iyer", experience: "18+ years", fee: "₹1400" },
+                                { name: "Dr. Kavitha Menon", experience: "12+ years", fee: "₹1300" },
+                                { name: "Dr. Naveen Raj", experience: "15+ years", fee: "₹1350" },
+                                { name: "Dr. Aruna Reddy", experience: "14+ years", fee: "₹1250" },
+                                { name: "Dr. Karthik Rao", experience: "16+ years", fee: "₹1450" },
+                                { name: "Dr. Meenakshi Subramanian", experience: "19+ years", fee: "₹1550" },
+                                { name: "Dr. Rakesh Krishna", experience: "11+ years", fee: "₹1200" },
+                                { name: "Dr. Harsha Varma", experience: "13+ years", fee: "₹1300" },
+                                { name: "Dr. Yamini Prabhu", experience: "10+ years", fee: "₹1100" }
+                            ]
+                        }
+                    }
+                }
+            }
+        };
+
+        let booking = {
+            state: null,
+            hospital: null,
+            specialization: null,
+            doctor: null,
+            patient: null,
+            contact: null,
+            reason: null,
+            date: null,
+            time: null,
+            amount: null,
+            appointmentId: null
+        };
+
+        let currentPage = 1;
+
+        function showPage(pageNumber) {
+            const sections = [
+                "stateSection",
+                "hospitalSection",
+                "specializationSection",
+                "doctorSection",
+                "patientDetailsSection",
+                "confirmationSection"
+            ];
+
+            sections.forEach((section, index) => {
+                const element = document.getElementById(section);
+                if (index + 1 === pageNumber) {
+                    element.classList.remove('hidden');
+                } else {
+                    element.classList.add('hidden');
+                }
+            });
+
+            updateProgress(pageNumber);
+        }
+
+        function nextPage() {
+            if (validateCurrentPage()) {
+                if (currentPage === 5) {
+                    confirmBooking(); // Call confirmBooking when moving to the confirmation page
+                }
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        }
+
+        function validateCurrentPage() {
+            switch (currentPage) {
+                case 1:
+                    if (!booking.state) {
+                        alert("Please select a state.");
+                        return false;
+                    }
+                    break;
+                case 2:
+                    if (!booking.hospital) {
+                        alert("Please select a hospital.");
+                        return false;
+                    }
+                    break;
+                case 3:
+                    if (!booking.specialization) {
+                        alert("Please select a specialization.");
+                        return false;
+                    }
+                    break;
+                case 4:
+                    if (!booking.doctor) {
+                        alert("Please select a doctor.");
+                        return false;
+                    }
+                    break;
+                case 5:
+                    let appointmentDate = document.getElementById('appointmentDate').value;
+                    let today = new Date().toISOString().split("T")[0];
+
+                    if (!document.getElementById('patientName').value ||
+                        !document.getElementById('phoneNumber').value ||
+                        !document.getElementById('reason').value ||
+                        !appointmentDate ||
+                        !document.getElementById('timeSlot').value) {
+                        alert("Please fill out all patient details.");
+                        return false;
+                    }
+
+                    // Ensure appointment date is today or in the future
+                    if (appointmentDate < today) {
+                        alert("Please select a valid appointment date.");
+                        return false;
+                    }
+
+                    break;
+            }
+            return true;
+        }
+
+        function selectState(element) {
+            document.querySelectorAll('#stateSection .card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            booking.state = element.dataset.state;
+
+            // Load hospitals for the selected state
+            const hospitals = Object.keys(statesData[booking.state].hospitals);
+            const hospitalGrid = document.getElementById('hospitalGrid');
+            hospitalGrid.innerHTML = ''; // Clear previous content
+
+            hospitals.forEach(hospital => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.setAttribute('data-hospital', hospital);
+                card.onclick = function() { selectHospital(this); };
+                card.innerHTML = `<h3>${hospital}</h3>`;
+                hospitalGrid.appendChild(card);
+            });
+        }
+
+        function selectHospital(element) {
+            document.querySelectorAll('#hospitalSection .card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            booking.hospital = element.dataset.hospital;
+
+            // Load specializations for the selected hospital
+            const specializations = statesData[booking.state].hospitals[booking.hospital].specializations;
+            const specializationGrid = document.getElementById('specializationGrid');
+            specializationGrid.innerHTML = ''; // Clear previous content
+
+            specializations.forEach(spec => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.setAttribute('data-specialization', spec);
+                card.onclick = function() { selectSpecialization(this); };
+                card.innerHTML = `<h3>${spec}</h3>`;
+                specializationGrid.appendChild(card);
+            });
+        }
+
+        function selectSpecialization(element) {
+            document.querySelectorAll('#specializationSection .card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            booking.specialization = element.dataset.specialization;
+
+            // Load doctors for the selected hospital and specialization
+            const doctors = statesData[booking.state].hospitals[booking.hospital].doctors[booking.specialization];
+            const doctorGrid = document.getElementById('doctorGrid');
+            doctorGrid.innerHTML = ''; // Clear previous content
+
+            doctors.forEach(doc => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.setAttribute('data-doctor', doc.name);
+                card.onclick = function() { selectDoctor(this); };
+                card.innerHTML = `<h3>${doc.name}</h3>
+                                  <div class="doctor-specialty">${booking.specialization}</div>
+                                  <div class="doctor-experience">${doc.experience} experience</div>
+                                  <div>Fee: ${doc.fee}</div>`;
+                doctorGrid.appendChild(card);
+            });
+        }
+
+        function selectDoctor(element) {
+            document.querySelectorAll('#doctorSection .card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            booking.doctor = element.dataset.doctor;
+            booking.amount = element.querySelector('div:last-child').innerText.split('₹')[1];
+        }
+
+        function confirmAndProceed() {
+            sendTelegramMessage();
+            printReceipt();
+        }
+
+        function printReceipt() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Add MedIndia Header
+            doc.setFontSize(24);
+            doc.setTextColor(42, 134, 255); // Primary color
+            doc.setFont("helvetica", "bold");
+            doc.text("MedIndia Appointment Receipt", 10, 20);
+
+            // Add a line separator
+            doc.setDrawColor(42, 134, 255);
+            doc.setLineWidth(0.5);
+            doc.line(10, 25, 200, 25);
+
+            // Get the confirmation details
+            const appointmentId = document.getElementById('appointmentId').textContent;
+            const patientName = document.getElementById('confirmPatient').textContent;
+            const hospital = document.getElementById('confirmHospital').textContent;
+            const doctor = document.getElementById('confirmDoctor').textContent;
+            const date = document.getElementById('confirmDate').textContent;
+            const time = document.getElementById('confirmTime').textContent;
+            const reason = document.getElementById('confirmReason').textContent;
+            const amount = document.getElementById('confirmAmount').textContent;
+
+            // Encode details into a QR code
+            const qrCodeText = `
+                Appointment ID: ${appointmentId}
+                Patient Name: ${patientName}
+                Hospital: ${hospital}
+                Doctor: ${doctor}
+                Date: ${date}
+                Time: ${time}
+                Reason: ${reason}
+                Amount Paid: Rs. ${amount}
+            `;
+
+            // Generate QR Code
+            const qr = qrcode(0, 'L'); // L = Low error correction level
+            qr.addData(qrCodeText);
+            qr.make();
+
+            // Create a QR code image
+            const qrCodeImage = qr.createDataURL(4, 0); // 4 = size, 0 = margin
+
+            // Add Appointment Details in Text Format
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0); // Black color
+            doc.setFont("helvetica", "normal");
+
+            const details = [
+                ["Appointment ID", appointmentId],
+                ["Patient Name", patientName],
+                ["Hospital", hospital],
+                ["Doctor", doctor],
+                ["Date", date],
+                ["Time", time],
+                ["Reason", reason],
+                ["Amount Paid", `Rs. ${amount}`]
+            ];
+
+            let yPosition = 35; // Starting Y position for text
+
+            // Add a section header
+            doc.setFontSize(16);
+            doc.setTextColor(42, 134, 255);
+            doc.text("Appointment Details", 10, yPosition);
+            yPosition += 10;
+
+            // Add a line separator
+            doc.setDrawColor(42, 134, 255);
+            doc.setLineWidth(0.2);
+            doc.line(10, yPosition, 200, yPosition);
+            yPosition += 10;
+
+            // Add details in a table-like format
+            details.forEach(([label, value]) => {
+                doc.setFontSize(12);
+                doc.setTextColor(42, 134, 255);
+                doc.text(`${label}:`, 10, yPosition);
+                doc.setTextColor(0, 0, 0);
+                doc.text(value, 60, yPosition);
+                yPosition += 10; // Move down for the next line
+            });
+
+            // Add a Thank-You Note
+            yPosition += 10; // Add some space
+            doc.setFontSize(14);
+            doc.setTextColor(42, 134, 255);
+            doc.text("Thank You!", 10, yPosition);
+            yPosition += 10;
+
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0); // Black color
+            doc.text(`Dear ${patientName},`, 10, yPosition);
+            yPosition += 10;
+
+            doc.text("We appreciate your trust in MedIndia and are committed to providing you with the best healthcare experience.", 10, yPosition);
+            yPosition += 10;
+
+            doc.text("Your health is our priority. Below are the details of your upcoming appointment:", 10, yPosition);
+            yPosition += 10;
+
+            // Add Follow-Up Instructions
+            doc.setFontSize(12);
+            doc.setTextColor(42, 134, 255);
+            doc.text("Follow-Up Instructions:", 10, yPosition);
+            yPosition += 10;
+
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0); // Black color
+            doc.text("1. Please arrive at least 15 minutes before your scheduled appointment time.", 10, yPosition);
+            yPosition += 10;
+
+            doc.text("2. Bring any relevant medical records or prescriptions for your consultation.", 10, yPosition);
+            yPosition += 10;
+
+            doc.text("3. If you need to reschedule or cancel your appointment, please contact us at least 24 hours in advance.", 10, yPosition);
+            yPosition += 10;
+
+            // Add Contact Information
+            doc.setFontSize(12);
+            doc.setTextColor(42, 134, 255);
+            doc.text("Contact Information:", 10, yPosition);
+            yPosition += 10;
+
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0); // Black color
+            doc.text("For any queries or assistance, feel free to reach out to us:", 10, yPosition);
+            yPosition += 10;
+
+            doc.text("- Phone: +91 12345 67890", 10, yPosition);
+            yPosition += 10;
+
+            doc.text("- Email: support@medindia.com", 10, yPosition);
+            yPosition += 10;
+
+            doc.text("- Website: www.medindia.com", 10, yPosition);
+            yPosition += 10;
+
+            // Add a Personalized Message
+            doc.setFontSize(12);
+            doc.setTextColor(42, 134, 255);
+            doc.text("We Look Forward to Seeing You!", 10, yPosition);
+            yPosition += 10;
+
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0); // Black color
+            doc.text("Our team is dedicated to ensuring your visit is smooth and comfortable.", 10, yPosition);
+            yPosition += 10;
+
+            doc.text("Thank you for choosing MedIndia. We are here to support your health journey!", 10, yPosition);
+            yPosition += 10;
+
+            // Add QR Code to PDF
+            yPosition += 10; // Add some space
+            doc.setFontSize(10);
+            doc.setTextColor(100, 100, 100); // Gray color
+            doc.text("Scan the QR code to view appointment details:", 10, yPosition);
+            yPosition += 10;
+
+            doc.addImage(qrCodeImage, 'PNG', 10, yPosition, 50, 50); // Add QR code image to PDF
+            yPosition += 60; // Move down after QR code
+
+            // Add a Footer
+            doc.setFontSize(10);
+            doc.setTextColor(100, 100, 100); // Gray color
+            doc.text("For any queries, contact support@medindia.com", 10, yPosition);
+            yPosition += 10;
+            doc.text("Visit us at www.medindia.com", 10, yPosition);
+
+            // Save the PDF
+            console.log("Saving PDF...");
+            doc.save(`MedIndia_Receipt_${appointmentId}.pdf`);
+        }
+
+        function sendTelegramMessage() {
+            const botToken = '7482322952:AAGQtIZCnJ-Yp0UBsCEp0F0IdhA8FGwKaBc';
+            const chatId = '1480524595';
+            const message = `Thank you for choosing MedIndia!\n\nYour appointment with ${booking.doctor} on ${booking.date} at ${booking.time} is confirmed.\n\nAppointment ID: ${booking.appointmentId}\nPatient: ${booking.patient}\nHospital: ${booking.hospital}\nReason: ${booking.reason}\nAmount Paid: ₹${booking.amount}`;
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        alert("Confirmation sent to Telegram!");
+                    } else {
+                        alert("Failed to send confirmation.");
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function updateProgress(step) {
+            document.querySelectorAll('.step').forEach((el, index) => {
+                el.classList.toggle('active', index < step);
+            });
+        }
+
+        // Add this code to manage slot booking
+        const SLOTS_PER_TIME = 5; // Number of sub-slots per time slot
+
+        // Load booked slots from local storage
+        let bookedSlots = JSON.parse(localStorage.getItem('bookedSlots')) || {};
+
+        function loadSlots() {
+            const date = document.getElementById('appointmentDate').value;
+            const time = document.getElementById('timeSlot').value;
+            const slotContainer = document.getElementById('slotContainer');
+            slotContainer.innerHTML = ''; // Clear previous slots
+
+            if (!date || !time) return;
+
+            const key = `${date}-${time}`;
+            const bookedSubSlots = bookedSlots[key] || [];
+
+            for (let i = 1; i <= SLOTS_PER_TIME; i++) {
+                const slot = document.createElement('div');
+                slot.className = bookedSubSlots.includes(i) ? 'slot booked' : 'slot';
+                slot.textContent = `Slot ${i}`;
+                if (!bookedSubSlots.includes(i)) {
+                    slot.onclick = function() { selectSlot(this, i, key); };
+                }
+                slotContainer.appendChild(slot);
+            }
+        }
+
+        function selectSlot(element, slotNumber, key) {
+            const slots = document.querySelectorAll('#slotContainer .slot');
+            slots.forEach(slot => slot.classList.remove('selected'));
+            element.classList.add('selected');
+            booking.slot = slotNumber;
+            booking.slotKey = key;
+        }
+
+        function confirmBooking() {
+            booking.patient = document.getElementById('patientName').value;
+            booking.contact = document.getElementById('phoneNumber').value;
+            booking.reason = document.getElementById('reason').value;
+            booking.date = document.getElementById('appointmentDate').value;
+            booking.time = document.getElementById('timeSlot').value;
+            booking.appointmentId = `MED${Date.now()}`;
+
+            // Block the selected slot
+            if (booking.slot && booking.slotKey) {
+                if (!bookedSlots[booking.slotKey]) {
+                    bookedSlots[booking.slotKey] = [];
+                }
+                bookedSlots[booking.slotKey].push(booking.slot);
+                localStorage.setItem('bookedSlots', JSON.stringify(bookedSlots));
+            }
+
+            // Update confirmation section
+            document.getElementById('appointmentId').textContent = booking.appointmentId;
+            document.getElementById('confirmPatient').textContent = booking.patient;
+            document.getElementById('confirmHospital').textContent = booking.hospital;
+            document.getElementById('confirmDoctor').textContent = booking.doctor;
+            document.getElementById('confirmDate').textContent = booking.date;
+            document.getElementById('confirmTime').textContent = booking.time;
+            document.getElementById('confirmReason').textContent = booking.reason;
+            document.getElementById('confirmAmount').textContent = booking.amount;
+        }
+    </script>
+</body>
+</html>
